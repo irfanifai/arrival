@@ -8,40 +8,31 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Admin</li>
-            <li class="#"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
-            <li class="menu-header">User</li>
-            <li class="#"><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+            <li><a class="nav-link" href="{{ route('home') }}"><i class="fas fa-home"></i> <span>Home</span></a></li>
             <li class="nav-item dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Auth</span></a>
-            <ul class="dropdown-menu">
-                <li><a href="auth-forgot-password.html">Forgot Password</a></li>
-                <li><a href="auth-login.html">Login</a></li>
-                <li><a href="auth-register.html">Register</a></li>
-                <li><a href="auth-reset-password.html">Reset Password</a></li>
-            </ul>
-            </li>
-            <li class="menu-header">Pages</li>
-            <li class="nav-item dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-exclamation"></i> <span>Errors</span></a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" href="errors-503.html">503</a></li>
-                <li><a class="nav-link" href="errors-403.html">403</a></li>
-                <li><a class="nav-link" href="errors-404.html">404</a></li>
-                <li><a class="nav-link" href="errors-500.html">500</a></li>
-            </ul>
+                <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Users</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ route('admin.users.index') }}">List User</a></li>
+                    <li><a href="{{ route('admin.users.create') }}">Create User</a></li>
+                </ul>
             </li>
             <li class="nav-item dropdown">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-bicycle"></i> <span>Features</span></a>
-            <ul class="dropdown-menu">
-                <li><a class="nav-link" href="features-activities.html">Activities</a></li>
-                <li><a class="nav-link" href="features-post-create.html">Post Create</a></li>
-                <li><a class="nav-link" href="features-posts.html">Posts</a></li>
-                <li><a class="nav-link" href="features-profile.html">Profile</a></li>
-                <li><a class="nav-link" href="features-settings.html">Settings</a></li>
-                <li><a class="nav-link" href="features-setting-detail.html">Setting Detail</a></li>
-                <li><a class="nav-link" href="features-tickets.html">Tickets</a></li>
-            </ul>
+                <a href="#" class="nav-link has-dropdown"><i class="far fa-edit"></i> <span>Posts</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">All Posts</a></li>
+                    <li><a href="#">Add New</a></li>
+                    <li><a href="#">Categories</a></li>
+                </ul>
             </li>
+            <li><a class="nav-link" href="#"><i class="far fa-comment-alt"></i> <span>Comments</span></a></li>
+            <li><a class="nav-link" href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
         </ul>
+
+        <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+            <a href="{{ route('logout') }}" class="btn btn-primary btn-lg btn-block btn-icon-split">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+
     </aside>
 </div>
