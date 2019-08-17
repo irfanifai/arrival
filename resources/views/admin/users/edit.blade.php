@@ -1,8 +1,14 @@
 @extends("admin.app")
 
-@section("title") Edit User @endsection
+@section("title") User @endsection
 
-@section("header") Users Edit @endsection
+@section("header") Edit User @endsection
+
+@section("breadcrumb")
+<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Users</a></div>
+<div class="breadcrumb-item active">Edit User</div>
+@endsection
 
 @section("content")
 <div class="row">

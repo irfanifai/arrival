@@ -4,6 +4,11 @@
 
 @section("header") List Users @endsection
 
+@section("breadcrumb")
+<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
+<div class="breadcrumb-item active">Users</div>
+@endsection
+
 @section('content')
 <div class="row text-center">
     <div class="col-12 col-md-6 col-lg-12">
@@ -15,6 +20,21 @@
                     data-flashdata="{{ session('status') }}">
                 </div>
             @endif
+
+            <div class="row mt-1">
+                <div class="col-md-6 ">
+                    <form action="{{route('admin.users.index')}}">
+                        <div class="input-group mb-3">
+                            <input value="{{Request::get('keyword')}}" name="keyword" class="form-control col-md-10"
+                            type="text" placeholder="filter berdasarkan email"/>
+
+                            <div class="input-group-append">
+                                <input type="submit"value="Filter" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
             <div class="table-responsive">
                 <table class="table table-striped table-md">

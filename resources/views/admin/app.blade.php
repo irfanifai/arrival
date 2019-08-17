@@ -31,6 +31,9 @@
         <section class="section">
           <div class="section-header">
             <h1>@yield("header")</h1>
+            <div class="section-header-breadcrumb">
+                @yield("breadcrumb")
+            </div>
           </div>
 
           <div class="section-body">

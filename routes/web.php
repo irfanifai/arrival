@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/admin/users', 'UsersController', ['as' => 'admin']);
+Route::get('admin/categories/trash', 'CategoriesController@trash')->name('admin.categories.trash');
+Route::get('/admin/categories/{id}/restore', 'CategoriesController@restore')->name('admin.categories.restore');
+Route::delete('admin/categories/{id}/delete-permanent', 'CategoriesController@deletePermanent')->name('admin.categories.delete-permanent');
+Route::resource('/admin/categories', 'CategoriesController', ['as' => 'admin']);

@@ -1,14 +1,19 @@
 @extends("admin.app")
 
-@section("title") Create User @endsection
+@section("title") User @endsection
 
-@section("header") Users Create @endsection
+@section("header") Create User @endsection
+
+@section("breadcrumb")
+<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Users</a></div>
+<div class="breadcrumb-item active">Create User</div>
+@endsection
 
 @section("content")
 <div class="row">
     <div class="col-12 col-md-6 col-lg-12">
         <div class="card">
-
             <div class="card-body">
                 <form enctype="multipart/form-data" method="POST" action="{{ route('admin.users.store') }}">
                     @csrf
@@ -48,6 +53,7 @@
                     <input class="btn btn-primary" type="submit" value="Save"/>
                 </form>
             </div>
+        </div>
     </div>
 </div>
 @endsection

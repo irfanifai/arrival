@@ -12,10 +12,16 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $users = User::all();
         $users = \App\User::paginate(10);
+
+        $filterKeyword = $request->get('keyword');
+
+        if($filterKeyword){
+            $users = \App\User::where('email', 'LIKE', "%$filterKeyword%")->paginate(10);
+        }
+
         return view('admin.users.index', compact('users'));
     }
 
