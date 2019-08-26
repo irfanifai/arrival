@@ -27,8 +27,10 @@ Route::resource('/admin/categories', 'CategoriesController', ['as' => 'admin']);
 
 Route::get('/admin/ajax/categories/search','CategoriesController@ajaxSearch', ['as' => 'admin']);
 
-
 Route::get('/admin/posts/trash', 'PostsController@trash')->name('admin.posts.trash');
 Route::get('/admin/posts/{id}/restore', 'PostsController@restore')->name('admin.posts.restore');
 Route::delete('/admin/posts/{id}/delete-permanent', 'PostsController@deletePermanent')->name('admin.posts.delete-permanent');
 Route::resource('/admin/posts', 'PostsController', ['as' => 'admin']);
+
+Route::get('/admin/settings', 'SettingsController@index')->name('admin.settings.index');
+Route::post('/admin/settings', 'SettingsController@store')->name('admin.settings.store');
