@@ -20,7 +20,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/admin/users', 'UsersController', ['as' => 'admin']);
-Route::get('admin/categories/trash', 'CategoriesController@trash')->name('admin.categories.trash');
+Route::get('/admin/categories/trash', 'CategoriesController@trash')->name('admin.categories.trash');
 Route::get('/admin/categories/{id}/restore', 'CategoriesController@restore')->name('admin.categories.restore');
-Route::delete('admin/categories/{id}/delete-permanent', 'CategoriesController@deletePermanent')->name('admin.categories.delete-permanent');
+Route::delete('/admin/categories/{id}/delete-permanent', 'CategoriesController@deletePermanent')->name('admin.categories.delete-permanent');
 Route::resource('/admin/categories', 'CategoriesController', ['as' => 'admin']);
+
+Route::get('/admin/ajax/categories/search','CategoriesController@ajaxSearch', ['as' => 'admin']);
+
+
+Route::get('/admin/posts/trash', 'PostsController@trash')->name('admin.posts.trash');
+Route::get('/admin/posts/{id}/restore', 'PostsController@restore')->name('admin.posts.restore');
+Route::delete('/admin/posts/{id}/delete-permanent', 'PostsController@deletePermanent')->name('admin.posts.delete-permanent');
+Route::resource('/admin/posts', 'PostsController', ['as' => 'admin']);

@@ -156,4 +156,14 @@ class CategoriesController extends Controller
                 ->with('status', 'Category permanently deleted');
         }
     }
+
+    // SELECT2
+    public function ajaxSearch(Request $request)
+    {
+        $keyword = $request->get('q');
+
+        $categories = Category::where("title", "LIKE", "%$keyword%")->get();
+
+        return $categories;
+    }
 }

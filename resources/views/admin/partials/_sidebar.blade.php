@@ -19,8 +19,8 @@
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-edit"></i> <span>Posts</span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">All Posts</a></li>
-                    <li><a href="#">Add New</a></li>
+                    <li><a href="{{ route('admin.posts.index') }}">All Posts</a></li>
+                    <li><a href="{{ route('admin.posts.create') }}">Add New</a></li>
                     <li><a href="{{ route('admin.categories.index') }}">Categories</a></li>
                 </ul>
             </li>

@@ -21,7 +21,7 @@
                 </div>
             @endif
 
-            <div class="row mt-1">
+            <div class="row mt-3 ml-3">
                 <div class="col-md-6 ">
                     <form action="{{route('admin.categories.index')}}">
                         <div class="input-group mb-3">
@@ -39,7 +39,7 @@
             <div class="row mr-1">
                 <div class="col-md-12 text-right">
                     <a href="{{route('admin.categories.create')}}" class="btn btn-primary">Create Categories</a>
-                    <a href="{{route('admin.categories.index')}}" class="btn btn-primary">Published</a>
+                    <a href="{{route('admin.categories.index')}}" class="btn btn-primary">All Categories</a>
                     <a href="{{route('admin.categories.trash')}}" class="btn btn-primary">Trash</a>
                 </div>
             </div>
