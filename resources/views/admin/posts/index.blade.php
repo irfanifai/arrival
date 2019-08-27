@@ -72,7 +72,7 @@
                         <td>{{ $post->user->name }}</td>
                         <td>{{ $post->category->title }}</td>
                         <td>
-                            @if($post->status === 1)
+                            @if($post->status == 1)
                             <span class="badge badge-success">
                                 {{ 'PUBLISH' }}
                             </span>

@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                         <label>Status</label>
-                        {!! Form::select('status', ['0' => 'Draft', '1' => 'Publish'], null, ['class' => $errors->has('status') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+                        {!! Form::select('status', ['2' => 'Draft', '1' => 'Publish'], null, ['class' => $errors->has('status') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
                         @if ($errors->has('status'))
                             <span class="invalid-feedback">
                                 <strong>{{ $errors->first('status') }}</strong>
