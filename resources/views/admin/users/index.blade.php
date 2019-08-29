@@ -21,12 +21,12 @@
                 </div>
             @endif
 
-            <div class="row mt-1">
+            <div class="row mt-3 ml-3">
                 <div class="col-md-6 ">
-                    <form action="{{route('admin.users.index')}}">
+                    <form action="{{ route('admin.users.index') }}">
                         <div class="input-group mb-3">
                             <input value="{{Request::get('keyword')}}" name="keyword" class="form-control col-md-10"
-                            type="text" placeholder="filter berdasarkan email"/>
+                            type="text" placeholder="filter berdasarkan name"/>
 
                             <div class="input-group-append">
                                 <input type="submit"value="Filter" class="btn btn-primary">

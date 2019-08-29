@@ -22,6 +22,11 @@
                         <p class="sed">{!! $post->body !!}</p>
                     <div class="col-md-6 md-in">
                 </div>
+                {{-- <tr>
+                    <td colspan=10>
+                        {{ $post->comment()->links()}}
+                    </td>
+                </tr> --}}
                 <div class="clearfix"> </div>
             </div>
             <div class="clearfix"> </div>
