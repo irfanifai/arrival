@@ -13,8 +13,9 @@
                     <a href="single.html"><img class="img-responsive sin-on blog-margin" src="{{asset('storage/' . $post->featured)}}" alt="" /></a>
                     <div class="blog-top">
                         <div class="blog-left">
-                            <b>15</b>
-                            <span>Feb</span>
+                            @php $date = $post->created_at; $date = date( "d", strtotime($date)); $month = $post->created_at; $month = date( "M", strtotime($month)); @endphp
+                            <b>{{ $date }}</b>
+                            <span>{{ $month }}</span>
                         </div>
                         <div class="top-blog">
                             <a class="fast text-capitalize" href="{{ url('/blog/' . $post->slug) }}">{{ $post->title }}</a>

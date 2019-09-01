@@ -13,11 +13,12 @@
                 <img class="img-responsive sin-on" src="{{asset('storage/' . $post->featured)}}" alt="" />
                 <div class="blog-top">
                     <div class="blog-left">
-                        <b>23</b>
-                        <span>July</span>
+                        @php $date = $post->created_at; $date = date( "d", strtotime($date)); $month = $post->created_at; $month = date( "M", strtotime($month)); @endphp
+                        <b>{{ $date }}</b>
+                        <span>{{ $month }}</span>
                     </div>
                     <div class="top-blog">
-                        <a class="fast" href="#">{{ $post->title }} </a>
+                        <a class="fast" href="">{{ $post->title }} </a>
                         <p>Posted by <b>{{ $post->user->name }}</b> in <b>{{ $post->category->title }}</b> | <b>{{ $post->comments()->count() }} Comments</b></p>
                         <p class="sed">{!! $post->body !!}</p>
                     <div class="col-md-6 md-in">

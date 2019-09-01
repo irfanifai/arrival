@@ -19,6 +19,9 @@ Route::get('/blog', 'IndexController@blog')->name('blog');
 Route::get('/blog/{slug}', 'IndexController@show');
 Route::post('/blog/{slug}/comment', 'IndexController@comment')->name('post.comment');
 
+// About
+Route::get('/about', 'IndexController@about')->name('about');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -49,3 +52,6 @@ Route::resource('/admin/comments', 'CommentsController', ['as' => 'admin', 'exce
 // Settings
 Route::get('/admin/settings', 'SettingsController@index')->name('admin.settings.index');
 Route::post('/admin/settings', 'SettingsController@store')->name('admin.settings.store');
+
+// About
+Route::resource('/admin/about', 'AboutController', ['as' => 'admin']);

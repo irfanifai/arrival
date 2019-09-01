@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Setting;
 use App\Post;
 use App\Comment;
+use App\About;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -17,8 +18,9 @@ class IndexController extends Controller
     public function index()
     {
         $setting = $this->setting();
-
-        return view('index', compact('setting'));
+        $posts = Post::where('status', 1);
+        $tujuan = Post::where('category_id', 22);
+        return view('index', compact('setting', 'posts', 'tujuan'));
     }
 
     public function blog()
@@ -50,5 +52,13 @@ class IndexController extends Controller
         Comment::create($request->all());
 
         return redirect()->back();
+    }
+
+    public function about()
+    {
+        $setting = $this->setting();
+        $about = About::paginate(10);
+        $abouttwo = About::paginate(10);
+        return view('about', compact('setting', 'about', 'abouttwo'));
     }
 }

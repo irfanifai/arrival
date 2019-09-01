@@ -51,7 +51,7 @@
 <div class="banner-bottom-strip">
 	<div class="container">
 		<h3>Indonesia</h3>
-		<p>Alam dan budaya adalah atraksi utama pariwisata Indonesia. Yang pertama dapat membanggakan kombinasi unik dari iklim tropis, kepulauan yang luas, dan hamparan pantai yang panjang, dan yang terakhir melengkapi mereka dengan warisan budaya yang kaya yang mencerminkan sejarah dinamis Indonesia dan keanekaragaman etnis. Indonesia memiliki ekosistem alam yang terpelihara dengan baik dengan hutan hujan yang membentang sekitar 57% dari tanah Indonesia (225 juta hektar). Hutan di Sumatra dan Kalimantan adalah contoh destinasi populer, seperti suaka margasatwa Orangutan. Selain itu, Indonesia memiliki salah satu garis pantai terpanjang di dunia, berukuran 54.716 kilometer (33.999 mi).Prambanan dan Borobudur, Toraja dan Bali, dengan perayaan Hindu, adalah beberapa tujuan populer untuk wisata budaya.</p>
+		<p>Alam dan budaya adalah atraksi utama pariwisata Indonesia. Yang pertama dapat membanggakan kombinasi unik dari iklim tropis, kepulauan yang luas, dan hamparan pantai yang panjang, dan yang terakhir melengkapi mereka dengan warisan budaya yang kaya yang mencerminkan sejarah dinamis Indonesia dan keanekaragaman etnis. Indonesia memiliki ekosistem alam yang terpelihara dengan baik dengan hutan hujan yang membentang sekitar 57% dari tanah Indonesia (225 juta hektar). Hutan di Sumatra dan Kalimantan adalah contoh destinasi populer, seperti suaka margasatwa Orang utan. Selain itu, Indonesia memiliki salah satu garis pantai terpanjang di dunia, berukuran 54.716 kilometer (33.999 mi).Prambanan dan Borobudur, Toraja dan Bali adalah beberapa tujuan populer untuk wisata budaya.</p>
 	</div>
 </div>
 

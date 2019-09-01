@@ -17,19 +17,19 @@ $(function () {
             <li>
             <div class="banner-info">
                 <h2>Wonderful Indonesia</h2>
-                <p>Catch a glimpse of Indonesia's bewitching attractions without having to put on your shoes and discover the ultimate destination that matches your soul.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus posuere odio, et dapibus felis pharetra in. Etiam a dictum lorem, sit amet blandit nibh.</p>
             </div>
             </li>
             <li>
                 <div class="banner-info">
-                <h2>Recreational Travel</h2>
-                <p>engineering applied to the planning, design, and control of industrial operations.of a industrial engineering today vikas</p>
+                <h2>Enjoy Jakarta</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus posuere odio, et dapibus felis pharetra in. Etiam a dictum lorem, sit amet blandit nibh.</p>
             </div>
             </li>
             <li>
                 <div class="banner-info">
-                <h2>Awesome Trip</h2>
-                <p>This small mark has two primary uses: to signify possession or omitted letters.Learn the correct uses of these comm</p>
+                <h2>Indonesia...kenali, cintai!</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus posuere odio, et dapibus felis pharetra in. Etiam a dictum lorem, sit amet blandit nibh.</p>
             </div>
             </li>
         </ul>

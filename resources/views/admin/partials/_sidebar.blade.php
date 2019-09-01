@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-        <a href="index.html">Arrival</a>
+        <a href="{{ url('/') }}">Arrival</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
         <a href="index.html">Ar</a>
@@ -25,6 +25,7 @@
                 </ul>
             </li>
             <li><a class="nav-link" href="{{ route('admin.comments.index') }}"><i class="far fa-comment-alt"></i> <span>Comments</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.about.index') }}"><i class="fas fa-info"></i> <span>About</span></a></li>
             <li><a class="nav-link" href="{{ route('admin.settings.index') }}"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
         </ul>
 

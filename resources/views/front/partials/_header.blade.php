@@ -20,7 +20,7 @@
                                 <a href="{{ url('/') }}">Home</a>
                             </li>
                             <li class="{{ Request::is('') ? 'active' : '' }}">
-                                <a href="{{ url('') }}">About</a>
+                                <a href="{{ url('/about') }}">About</a>
                             </li>
                             <li class="{{ Request::is('blog') ? 'active' : '' }}">
                                 <a href="{{ url('/blog') }}">Blog</a>

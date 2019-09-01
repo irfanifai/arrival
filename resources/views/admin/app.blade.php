@@ -12,7 +12,7 @@
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('stisla-master/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+    <link rel="stylesheet" href="{{ asset('stisla-master/assets/css/components.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
 </head>
 
@@ -29,18 +29,18 @@
 
             <!-- Main Content -->
             <div class="main-content">
-            <section class="section">
-                <div class="section-header">
-                <h1>@yield("header")</h1>
-                <div class="section-header-breadcrumb">
-                    @yield("breadcrumb")
-                </div>
-                </div>
+                <section class="section">
+                    <div class="section-header">
+                        <h1>@yield("header")</h1>
+                        <div class="section-header-breadcrumb">
+                            @yield("breadcrumb")
+                        </div>
+                    </div>
 
-                <div class="section-body">
-                @yield("content")
-                </div>
-            </section>
+                    <div class="section-body">
+                        @yield("content")
+                    </div>
+                </section>
             </div>
             <footer class="main-footer">
             <div class="footer-left">
