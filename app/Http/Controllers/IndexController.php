@@ -6,6 +6,7 @@ use App\Setting;
 use App\Post;
 use App\Comment;
 use App\About;
+use App\Contact;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -60,5 +61,24 @@ class IndexController extends Controller
         $about = About::paginate(10);
         $abouttwo = About::paginate(10);
         return view('about', compact('setting', 'about', 'abouttwo'));
+    }
+
+    public function contact(Request $request)
+    {
+        $setting = $this->setting();
+        return view('contact', compact('setting'));
+    }
+
+    public function contactStore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'message' => 'required|min:5'
+        ]);
+
+        Contact::create($request->all());
+        return redirect()->route('contact.index')
+            ->with('status', 'Your message has been sent');
     }
 }

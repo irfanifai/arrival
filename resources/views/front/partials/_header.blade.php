@@ -25,8 +25,8 @@
                             <li class="{{ Request::is('blog') ? 'active' : '' }}">
                                 <a href="{{ url('/blog') }}">Blog</a>
                             </li>
-                            <li class="{{ Request::is('') ? 'active' : '' }}">
-                                <a href="{{ url('') }}">Contact</a>
+                            <li class="{{ Request::is('contact') ? 'active' : '' }}">
+                                <a href="{{ url('/contact') }}">Contact</a>
                             </li>
                         </ul>
                     <div class="clearfix"></div>

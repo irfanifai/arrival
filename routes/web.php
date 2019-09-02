@@ -22,9 +22,13 @@ Route::post('/blog/{slug}/comment', 'IndexController@comment')->name('post.comme
 // About
 Route::get('/about', 'IndexController@about')->name('about');
 
+// Contact
+Route::get('/contact', 'IndexController@contact')->name('contact.index');
+Route::post('/contact', 'IndexController@contactStore')->name('contact.store');
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/home', 'HomeController@index', ['as' => 'admin'])->name('home');
 
 // Users
 Route::resource('/admin/users', 'UsersController', ['as' => 'admin']);
@@ -55,3 +59,6 @@ Route::post('/admin/settings', 'SettingsController@store')->name('admin.settings
 
 // About
 Route::resource('/admin/about', 'AboutController', ['as' => 'admin']);
+
+// Admin Message
+Route::resource('/admin/messages', 'MessagesController', ['as' => 'admin']);
