@@ -14,12 +14,12 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = \App\Category::paginate(10);
+        $categories = Category::paginate(10);
 
         $filterKeyword = $request->get('name');
 
         if ($filterKeyword) {
-            $categories = \App\Category::where("title", "LIKE", "%$filterKeyword%")->paginate(10);
+            $categories = Category::where("title", "LIKE", "%$filterKeyword%")->paginate(10);
         }
 
         return view('admin.categories.index', compact('categories'));
@@ -55,7 +55,7 @@ class CategoriesController extends Controller
 
         $new_category->save();
         return redirect()->route('admin.categories.index')
-            ->with('status', 'Categories successfully created');
+            ->with('status', 'Kategori berhasil dibuat');
     }
 
     /**
@@ -112,48 +112,48 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = \App\Category::findOrFail($id);
+        $category = Category::findOrFail($id);
 
         $category->delete();
 
         return redirect()->route('admin.categories.index')
-            ->with('status', 'Categories successfully moved to trash');
+            ->with('status', 'Kategori berhasil dipindahkan ke trash');
     }
 
     public function trash()
     {
-        $deleted_category = \App\Category::onlyTrashed()->paginate(10);
+        $deleted_category = Category::onlyTrashed()->paginate(10);
 
         return view('admin.categories.trash', ['categories' => $deleted_category]);
     }
 
     public function restore($id)
     {
-        $category = \App\Category::withTrashed()->findOrFail($id);
+        $category = Category::withTrashed()->findOrFail($id);
 
         if ($category->trashed()) {
             $category->restore();
         } else {
             return redirect()->route('admin.categories.index')
-                ->with('status', 'Category is not in trash');
+                ->with('status', 'Kategori tidak berada di trash');
         }
 
         return redirect()->route('admin.categories.index')
-            ->with('status', 'Category successfully restored');
+            ->with('status', 'Kategori berhasil di restore');
     }
 
     public function deletePermanent($id)
     {
-        $category = \App\Category::withTrashed()->findOrFail($id);
+        $category = Category::withTrashed()->findOrFail($id);
 
         if (!$category->trashed()) {
             return redirect()->route('admin.categories.index')
-                ->with('status', 'Can not delete permanent active category');
+                ->with('status', 'Tidak dapat menghapus kategori aktif secara permanen');
         } else {
             $category->forceDelete();
 
             return redirect()->route('admin.categories.index')
-                ->with('status', 'Category permanently deleted');
+                ->with('status', 'Kategori dihapus secara permanen');
         }
     }
 

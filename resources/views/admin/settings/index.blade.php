@@ -1,12 +1,12 @@
 @extends('admin.app')
 
-@section("title") Setting @endsection
+@section("title") Pengaturan Footer @endsection
 
-@section("header") Setting @endsection
+@section("header") Pengaturan Footer @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item active">Setting</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></div>
+<div class="breadcrumb-item active">Pengaturan Footer</div>
 @endsection
 
 @section('content')
@@ -45,7 +45,6 @@
                             </div>
                             <div class="form-group">
                                 <label for="tagline">Tagline</label>
-                                <label for="tagline">Title</label>
                                 <input type="text" class="form-control @error('tagline') is-invalid @enderror" name="tagline" id="tagline" value="{{ $setting->tagline }}">
                                 @error('tagline')
                                     <div class="invalid-feedback">{{ $message }}</div>

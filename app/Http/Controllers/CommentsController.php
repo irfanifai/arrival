@@ -14,8 +14,6 @@ class CommentsController extends Controller
      */
     public function index(Request $request)
     {
-        // $comments = Comment::with('post')->paginate(10);
-
         $status = $request->get('status');
         $keyword = $request->get('keyword') ? $request->get('keyword') : '';
 
@@ -108,7 +106,7 @@ class CommentsController extends Controller
         $comment->update($request->all());
 
         return redirect()->route('admin.comments.index')
-            ->with('status', 'Comments succesfully updated');
+            ->with('status', 'Komentar berhasil diupdate');
     }
 
     /**
@@ -124,7 +122,7 @@ class CommentsController extends Controller
         $comment->delete();
 
         return redirect()->route('admin.comments.index')
-            ->with('status', 'Comment successfully moved to trash');
+            ->with('status', 'Komentar berhasil dipindahkan ke trash');
     }
 
     public function trash()
@@ -142,25 +140,25 @@ class CommentsController extends Controller
             $comment->restore();
         } else {
             return redirect()->route('admin.comments.index')
-                ->with('status', 'Comment is not in trash');
+                ->with('status', 'Komentar tidak berada di trash');
         }
 
         return redirect()->route('admin.comments.index')
-            ->with('status', 'Comment successfully restored');
+            ->with('status', 'Komentar berhasil di restore');
     }
 
     public function deletePermanent($id)
     {
-        $comment = \App\Comment::withTrashed()->findOrFail($id);
+        $comment = Comment::withTrashed()->findOrFail($id);
 
         if (!$comment->trashed()) {
             return redirect()->route('admin.comments.index')
-                ->with('status', 'Can not delete permanent active comment');
+                ->with('status', 'Tidak dapat menghapus komentar aktif secara permanen');
         } else {
             $comment->forceDelete();
 
             return redirect()->route('admin.comments.index')
-                ->with('status', 'Comment permanently deleted');
+                ->with('status', 'Komentar dihapus secara permanen');
         }
     }
 }

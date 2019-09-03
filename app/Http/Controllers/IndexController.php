@@ -79,6 +79,6 @@ class IndexController extends Controller
 
         Contact::create($request->all());
         return redirect()->route('contact.index')
-            ->with('status', 'Your message has been sent');
+            ->with('status', 'Pesan berhasil dikirim');
     }
 }

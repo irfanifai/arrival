@@ -5,7 +5,7 @@
 @section('content')
 <div class="single">
 	<div class="container">
-		<h3>Blog</h3>
+		<h3>{{ $post->title }}</h3>
 
         <div class="single wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
             <div class="blog-to1 service_info">
@@ -18,9 +18,9 @@
                         <span>{{ $month }}</span>
                     </div>
                     <div class="top-blog">
-                        <a class="fast" href="">{{ $post->title }} </a>
+                        <a class="fast" href="{{ url('/blog/' . $post->slug) }}">{{ $post->title }}</a>
                         <p>Posted by <b>{{ $post->user->name }}</b> in <b>{{ $post->category->title }}</b> | <b>{{ $post->comments()->count() }} Comments</b></p>
-                        <p class="sed">{!! $post->body !!}</p>
+                        <p class="sed text-justify">{!! $post->body !!}</p>
                     <div class="col-md-6 md-in">
                 </div>
                 {{-- <tr>
@@ -34,7 +34,7 @@
         </div>
 
 		<div class="single-middle">
-            <h3>{{ $post->comments->count() }} Comments</h3>
+            <h3>{{ $post->comments->count() }} Komentar</h3>
                 @if ($post->comments)
                     @foreach ($post->comments as $comment)
                         @if ($comment->status == 1)
@@ -58,11 +58,11 @@
         </div>
 		<!---->
 		<div class="single-bottom">
-			<h3>Leave A Comment</h3>
+			<h3>Tulis Komentar</h3>
                 {!! Form::open(['route' => ['post.comment', $post->slug], 'method' => 'POST']) !!}
                 @csrf
                     <div class="col-md-6 comment">
-                        {!! Form::text('name', null, ['class' => $errors->has('name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Enter Your Name', 'required']) !!}
+                        {!! Form::text('name', null, ['class' => $errors->has('name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Nama Lengkap', 'required']) !!}
                         @if ($errors->has('name'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('name') }}</strong>
@@ -70,7 +70,7 @@
                         @endif
                     </div>
                     <div class="col-md-6 comment">
-                        {!! Form::email('email', null, ['class' => $errors->has('email') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Email Address (will not be published)', 'required']) !!}
+                        {!! Form::email('email', null, ['class' => $errors->has('email') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Email Address', 'required']) !!}
                         @if ($errors->has('email'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('email') }}</strong>
@@ -78,7 +78,7 @@
                         @endif
                     </div>
                     <div class="clearfix"> </div>
-                        {!! Form::textarea('body', null, ['id' => 'textarea', 'class' => $errors->has('body') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Type Your Comment', 'required']) !!}
+                        {!! Form::textarea('body', null, ['id' => 'textarea', 'class' => $errors->has('body') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Isi Komentar', 'required']) !!}
                         @if ($errors->has('body'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('body') }}</strong>

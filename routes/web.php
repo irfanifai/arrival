@@ -28,7 +28,8 @@ Route::post('/contact', 'IndexController@contactStore')->name('contact.store');
 
 Auth::routes();
 
-Route::get('/admin/home', 'HomeController@index', ['as' => 'admin'])->name('home');
+// Dashboard/Home
+Route::get('/admin/home', 'HomeController@index', ['as' => 'admin'])->name('admin.home');
 
 // Users
 Route::resource('/admin/users', 'UsersController', ['as' => 'admin']);

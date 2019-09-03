@@ -28,6 +28,6 @@ class SettingsController extends Controller
         ], $request->all());
 
         return redirect()->route('admin.settings.index')
-            ->with('status', 'Setting succesfully updated');
+            ->with('status', 'Pengaturan Footer berhasil diupdate');
     }
 }

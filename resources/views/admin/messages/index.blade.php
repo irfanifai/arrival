@@ -1,12 +1,12 @@
 @extends('admin.app')
 
-@section("title") Message @endsection
+@section("title") Pesan @endsection
 
-@section("header") List Message @endsection
+@section("header") Daftar Pesan @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item active">Message</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item active">Pesan</div>
 @endsection
 
 @section('content')
@@ -26,22 +26,23 @@
                     <form action="{{ route('admin.messages.index') }}">
                         <div class="input-group mb-3">
                             <input value="{{Request::get('keyword')}}" name="keyword" class="form-control col-md-10"
-                            type="text" placeholder="filter berdasarkan name"/>
+                            type="text" placeholder="cari berdasarkan nama pegirim"/>
 
                             <div class="input-group-append">
-                                <input type="submit"value="Filter" class="btn btn-primary">
+                                <input type="submit"value="Cari" class="btn btn-primary">
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
+            <br>
 
             <div class="table-responsive">
                 <table class="table table-striped table-md">
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th>Nama Pengirim</th>
+                    <th>Email Pengirim</th>
                     <th>Isi Pesan</th>
                     <th>Tanggal Diterima</th>
                     <th>Action</th>
@@ -51,22 +52,19 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $message->name }}</td>
                         <td>{{ $message->email }}</td>
-                        @php $isi = $message->message; $max = 40; $isi = substr($isi, 0, $max) . '...'; @endphp
-                        <td>{{ $isi }}</td>
+                        <td>{!! substr($message->message, 0, 40) !!}...</td>
                         @php
                         $date = $message->created_at;
                         $date = date( "d M Y h:i", strtotime($date));
                         @endphp
                         <td>{{ $date }}</td>
                         <td>
-                            <a href="{{ route('admin.messages.show', ['id' => $message->id]) }}" class="btn btn-primary">Detail</a>
+                            <a href="{{ route('admin.messages.show', ['id' => $message->id]) }}" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail"><i class="fas fa-info"></i></i></a>
 
-                            <form onsubmit="return confirm('Delete this message permanently?')" class="d-inline" action="{{route('admin.messages.destroy', ['id' => $message->id ])}}" method="POST">
+                            <form onsubmit="return confirm('Hapus Pesan?')" class="d-inline" action="{{route('admin.messages.destroy', ['id' => $message->id ])}}" method="POST">
                                 @method('delete')
                                 @csrf
-
-                                <button type="submit" value="Delete" class="btn btn-danger">
-                                    Delete
+                                <button type="submit" class="btn btn-danger btn-action" data-toggle="tooltip" title="Trash"><i class="fas fa-trash"></i>
                                 </button>
                             </form>
                         </td>
@@ -75,9 +73,9 @@
 
                 <tfoot>
                     <tr>
-                        {{-- <td colspan=10>
-                            {{$message->appends(Request::all())->links()}}
-                        </td> --}}
+                        <td colspan=10>
+                            {{$messages->appends(Request::all())->links()}}
+                        </td>
                     </tr>
                 </tfoot>
 

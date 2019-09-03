@@ -1,13 +1,13 @@
 @extends("admin.app")
 
-@section("title") Message @endsection
+@section("title") Pesan @endsection
 
-@section("header") Detail Message @endsection
+@section("header") Detail Pesan @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.messages.index') }}">Messages</a></div>
-<div class="breadcrumb-item active">Detail Message</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.messages.index') }}">Pesan</a></div>
+<div class="breadcrumb-item active">Detail Pesan</div>
 @endsection
 
 @section("content")
@@ -30,7 +30,8 @@
                     </tr>
                     <tr>
                         <td>Waktu Diterima</td>
-                        <td>{{ $message->created_at }}</td>
+                        @php $date = $message->created_at; $date = date( "d M Y h:i", strtotime($date));@endphp
+                        <td>{{ $date }}</td>
                     </tr>
                 </table>
             </div>

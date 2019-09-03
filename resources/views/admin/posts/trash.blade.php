@@ -1,13 +1,13 @@
 @extends('admin.app')
 
-@section("title") Post @endsection
+@section("title") Artikel @endsection
 
-@section("header") Trash Post @endsection
+@section("header") Trash Artikel @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.posts.index') }}">Post</a></div>
-<div class="breadcrumb-item active">Trash Post</div>
+<div class="breadcrumb-item"><a href="{{ route('home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.posts.index') }}">Artikel</a></div>
+<div class="breadcrumb-item active">Trash Artikel</div>
 @endsection
 
 @section('content')
@@ -60,9 +60,9 @@
                 <table class="table table-striped table-md">
                 <tr>
                     <th>#</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Category</th>
+                    <th>Judul Artikel</th>
+                    <th>Penulis</th>
+                    <th>Kategori</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>

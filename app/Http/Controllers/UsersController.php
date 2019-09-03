@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -14,12 +14,12 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        $users = \App\User::paginate(10);
+        $users = User::paginate(10);
 
         $filterKeyword = $request->get('keyword');
 
         if($filterKeyword){
-            $users = \App\User::where('email', 'LIKE', "%$filterKeyword%")->paginate(10);
+            $users = User::where('email', 'LIKE', "%$filterKeyword%")->paginate(10);
         }
 
         return view('admin.users.index', compact('users'));
@@ -62,7 +62,7 @@ class UsersController extends Controller
 
         $new_user->save();
         return redirect()->route('admin.users.index')
-            ->with('status', 'User successfully created');
+            ->with('status', 'User berhasil dibuat!');
     }
 
     /**
@@ -105,7 +105,7 @@ class UsersController extends Controller
             "email" => "required|email"
         ]);
 
-        $user = \App\User::findOrFail($id);
+        $user = User::findOrFail($id);
 
         $user->name = $request->get('name');
         $user->email = $request->get('email');
@@ -120,7 +120,7 @@ class UsersController extends Controller
 
         $user->save();
         return redirect()->route('admin.users.index', ['id' => $id])
-            ->with('status', 'User succesfully updated');
+            ->with('status', 'User berhasil diupdate');
     }
 
     /**
@@ -131,11 +131,11 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = \App\User::findOrFail($id);
+        $user = User::findOrFail($id);
 
         $user->delete();
 
         return redirect()->route('admin.users.index')
-            ->with('status', 'User Successfully Delete');
+            ->with('status', 'User berhasil dihapus');
     }
 }

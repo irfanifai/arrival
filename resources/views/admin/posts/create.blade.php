@@ -1,13 +1,13 @@
 @extends("admin.app")
 
-@section("title") Post @endsection
+@section("title") Artikel @endsection
 
-@section("header") Create Post @endsection
+@section("header") Buat Artikel @endsection
 
 @section("breadcrumb")
 <div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.posts.index') }}">Post</a></div>
-<div class="breadcrumb-item active">Create Post</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.posts.index') }}">Artikel</a></div>
+<div class="breadcrumb-item active">Buat Artikel</div>
 @endsection
 
 @section("content")

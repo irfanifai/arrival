@@ -14,7 +14,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about = \App\About::paginate(10);
+        $about = About::paginate(10);
         return view('admin.about.index', compact('about'));
     }
 
@@ -57,7 +57,7 @@ class AboutController extends Controller
         $about->save();
 
         return redirect()->route('admin.about.index')
-            ->with('status', 'About succesfully created');
+            ->with('status', 'About berhasil dibuat');
     }
 
     /**
@@ -79,7 +79,7 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        $about = \App\About::findOrFail($id);
+        $about = About::findOrFail($id);
         return view('admin.about.edit', compact('about'));
     }
 
@@ -116,7 +116,7 @@ class AboutController extends Controller
         $abouts->save();
 
         return redirect()->route('admin.about.index')
-            ->with('status', 'About succesfully updated');
+            ->with('status', 'About berhasil diupdate');
 
         // return $request;
     }

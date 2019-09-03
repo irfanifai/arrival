@@ -5,7 +5,7 @@
 @section("header") About @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
 <div class="breadcrumb-item active">About</div>
 @endsection
 

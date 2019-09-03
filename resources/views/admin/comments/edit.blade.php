@@ -1,13 +1,13 @@
 @extends("admin.app")
 
-@section("title") Comment @endsection
+@section("title") Komentar @endsection
 
-@section("header") Edit Comment @endsection
+@section("header") Edit Komentar @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.comments.index') }}">Comment</a></div>
-<div class="breadcrumb-item active">Edit Comment</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.comments.index') }}">Komentar</a></div>
+<div class="breadcrumb-item active">Edit Komentar</div>
 @endsection
 
 @section("content")
@@ -19,7 +19,7 @@
                     @method('patch')
                     @csrf
                     <div class="form-group">
-                        <label>Full Name</label>
+                        <label>Nama Lengkap</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $comment->name }}" readonly>
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -33,7 +33,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Comment</label>
+                        <label>Isi Komentar</label>
                         <textarea cols="30" rows="10" class="form-control" readonly>{{ $comment->body }}</textarea>
                     </div>
                     <div class="form-group">
@@ -41,7 +41,7 @@
                         {!! Form::select('status', [2 => 'Hide', 1 => 'Publish'], null, ['class' => 'form-control', 'required']) !!}
                     </div>
 
-                    <input class="btn btn-primary" type="submit" value="Save"/>
+                    <input class="btn btn-primary" type="submit" value="Simpan">
                 </form>
             </div>
         </div>

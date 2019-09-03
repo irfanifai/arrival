@@ -1,13 +1,13 @@
 @extends("admin.app")
 
-@section("title") User @endsection
+@section("title") Pengguna @endsection
 
-@section("header") Detail User @endsection
+@section("header") Detail Pengguna @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Users</a></div>
-<div class="breadcrumb-item active">Detail User</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Pengguna</a></div>
+<div class="breadcrumb-item active">Detail Pengguna</div>
 @endsection
 
 @section("content")
@@ -17,7 +17,7 @@
             <div class="card-body">
                 <div class="media">
                     @if($user->avatar)
-                        <img class="mr-3" src="{{asset('storage/'. $user->avatar)}}" width="100px" class="rounded-circle author-box-picture">
+                        <img class="mr-3" src="{{ asset('storage/'. $user->avatar) }}" width="100px" class="rounded-circle author-box-picture">
                         @else
                         <p class="mr-5">No avatar</p>
                         @endif

@@ -1,13 +1,13 @@
 @extends("admin.app")
 
-@section("title") User @endsection
+@section("title") Pengguna @endsection
 
-@section("header") Create User @endsection
+@section("header") Buat Pengguna Baru @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Users</a></div>
-<div class="breadcrumb-item active">Create User</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Pengguna</a></div>
+<div class="breadcrumb-item active">Buat Pengguna</div>
 @endsection
 
 @section("content")
@@ -18,8 +18,8 @@
                 <form enctype="multipart/form-data" method="POST" action="{{ route('admin.users.store') }}">
                     @csrf
                     <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="your name">
+                        <label>Nama Lengkap</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="nama lengkap">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -39,14 +39,14 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Password Confirmation</label>
-                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password confirmation" placeholder="password confirmation">
+                        <label>Konfirmasi Password</label>
+                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password confirmation" placeholder="konfirmasi password">
                         @error('password_confirmation')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Avatar Image</label>
+                        <label>Foto Profile</label>
                         <input type="file" class="form-control pb-5" name="avatar" id="avatar">
                     </div>
 

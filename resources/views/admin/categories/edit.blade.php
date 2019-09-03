@@ -1,13 +1,13 @@
 @extends("admin.app")
 
-@section("title") User @endsection
+@section("title") Kategori @endsection
 
-@section("header") Edit User @endsection
+@section("header") Edit Kategori @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.categories.index') }}">Categories</a></div>
-<div class="breadcrumb-item active">Edit Categories</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.categories.index') }}">Kategori</a></div>
+<div class="breadcrumb-item active">Edit Kategori</div>
 @endsection
 
 @section("content")
@@ -20,7 +20,7 @@
                     @method('patch')
                     @csrf
                     <div class="form-group">
-                        <label>Category Name</label>
+                        <label>Judul Kategori</label>
                         <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{ $categories->title }}">
                         @error('title')
                             <div class="invalid-feedback">{{ $message }}</div>

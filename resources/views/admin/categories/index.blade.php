@@ -1,12 +1,12 @@
 @extends('admin.app')
 
-@section("title") Categories @endsection
+@section("title") Kategori @endsection
 
-@section("header") List Categories @endsection
+@section("header") Daftar Kategori @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item active">Categories</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item active">Kategori</div>
 @endsection
 
 @section('content')
@@ -26,10 +26,10 @@
                     <form action="{{route('admin.categories.index')}}">
                         <div class="input-group mb-3">
                             <input value="{{Request::get('name')}}" name="name" class="form-control col-md-10"
-                            type="text" placeholder="filter berdasarkan title"/>
+                            type="text" placeholder="cari berdasarkan judul kategori">
 
                             <div class="input-group-append">
-                                <input type="submit"value="Filter" class="btn btn-primary">
+                                <input type="submit"value="Cari" class="btn btn-primary">
                             </div>
                         </div>
                     </form>
@@ -38,8 +38,7 @@
 
             <div class="row mr-1">
                 <div class="col-md-12 text-right">
-                    <a href="{{route('admin.categories.create')}}" class="btn btn-primary">Create Categories</a>
-                    <a href="{{route('admin.categories.index')}}" class="btn btn-primary">All Categories</a>
+                    <a href="{{route('admin.categories.create')}}" class="btn btn-primary">Buat Kategori Baru</a>
                     <a href="{{route('admin.categories.trash')}}" class="btn btn-primary">Trash</a>
                 </div>
             </div>
@@ -49,7 +48,7 @@
                 <table class="table table-striped table-md">
                 <tr>
                     <th>#</th>
-                    <th>Title</th>
+                    <th>Judul Kategori</th>
                     <th>Slug</th>
                     <th>Action</th>
                 </tr>
@@ -59,14 +58,12 @@
                         <td>{{ $categorie->title }}</td>
                         <td>{{ $categorie->slug }}</td>
                         <td>
-                            <a href="{{ route('admin.categories.edit', ['id' => $categorie->id]) }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ route('admin.categories.edit', ['id' => $categorie->id]) }}" class="btn btn-warning btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 
-                            <form onsubmit="return confirm('Move category to trash?')" class="d-inline" action="{{route('admin.categories.destroy', ['id' => $categorie->id ])}}" method="POST">
+                            <form onsubmit="return confirm('Move kategori to trash?')" class="d-inline" action="{{route('admin.categories.destroy', ['id' => $categorie->id ])}}" method="POST">
                                 @method('delete')
                                 @csrf
-
-                                <button type="submit" value="Trash" class="btn btn-danger">
-                                    Trash
+                                <button type="submit" class="btn btn-danger btn-action" data-toggle="tooltip" title="Trash"><i class="fas fa-trash"></i>
                                 </button>
                             </form>
                         </td>

@@ -1,13 +1,13 @@
 @extends("admin.app")
 
-@section("title") Posts @endsection
+@section("title") Artikel @endsection
 
-@section("header") Detail Posts @endsection
+@section("header") Detail Artikel @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.posts.index') }}">Posts</a></div>
-<div class="breadcrumb-item active">Detail Posts</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.posts.index') }}">Artikel</a></div>
+<div class="breadcrumb-item active">Detail Artikel</div>
 @endsection
 
 @section("content")
@@ -22,27 +22,27 @@
                             <td>{{ $posts->id }}</td>
                         </tr>
                         <tr>
-                            <th>Author</th>
+                            <th>Penulis</th>
                             <td>{{ $posts->user->name }}</td>
                         </tr>
                         <tr>
-                            <th>Published At</th>
+                            <th>Tanggal Upload</th>
                             <td>{{ $posts->published_at }}</td>
                         </tr>
                         <tr>
-                            <th>Title</th>
+                            <th>Judul Artikel</th>
                             <td>{{ $posts->title }}</td>
                         </tr>
                         <tr>
-                            <th>Body</th>
+                            <th>Isi Artikel</th>
                             <td>{!! $posts->body !!}</td>
                         </tr>
                         <tr>
-                            <th>Category</th>
+                            <th>Kategori</th>
                             <td>{{ $posts->category->title }}</td>
                         </tr>
                         <tr>
-                            <th>Featured Image</th>
+                            <th>Gambar Utama</th>
                             <td><img src="{{asset('storage/' . $posts->featured)}}" alt="Featured Image"  height="450" width="865"></td>
                         </tr>
                     </table>

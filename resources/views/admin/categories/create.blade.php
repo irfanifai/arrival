@@ -1,13 +1,13 @@
 @extends("admin.app")
 
-@section("title") Categories @endsection
+@section("title") Kategori @endsection
 
-@section("header") Create Categories @endsection
+@section("header") Buat Kategori Baru @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.categories.index') }}">Categories</a></div>
-<div class="breadcrumb-item active">Create Categories</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.categories.index') }}">Kategori</a></div>
+<div class="breadcrumb-item active">Buat Kategori Baru</div>
 @endsection
 
 @section("content")
@@ -18,13 +18,13 @@
                 <form method="POST" action="{{ route('admin.categories.store') }}">
                     @csrf
                     <div class="form-group">
-                        <label>Categorie Name</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{ old('title') }}" placeholder="your categories name">
+                        <label>Judul Kategori</label>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{ old('title') }}" placeholder="judul kategori">
                         @error('title')
                             <div class="invalid-feedback">{{ $message }}</dislugv>
                         @enderror
                     </div>
-                    <input class="btn btn-primary" type="submit" value="Save"/>
+                    <input class="btn btn-primary" type="submit" value="Simpan">
                 </form>
             </div>
         </div>

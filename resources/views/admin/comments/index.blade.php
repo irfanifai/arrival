@@ -1,12 +1,12 @@
 @extends('admin.app')
 
-@section("title") Comments @endsection
+@section("title") Komentar @endsection
 
-@section("header") List Comments @endsection
+@section("header") Daftar Komentar @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item active">Comments</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item active">Komentar</div>
 @endsection
 
 @section('content')
@@ -26,10 +26,10 @@
                     <form action="{{ route('admin.comments.index') }}">
                         <div class="input-group mb-3">
                             <input value="{{Request::get('keyword')}}" name="keyword" class="form-control col-md-10"
-                            type="text" placeholder="filter berdasarkan name"/>
+                            type="text" placeholder="filter berdasarkan nama">
 
                             <div class="input-group-append">
-                                <input type="submit"value="Filter" class="btn btn-primary">
+                                <input type="submit"value="Cari" class="btn btn-primary">
                             </div>
                         </div>
                     </form>
@@ -59,9 +59,9 @@
                 <table class="table table-striped table-md">
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Comment</th>
-                    <th>Post</th>
+                    <th>Nama</th>
+                    <th>Isi Komentar</th>
+                    <th>Judul Artikel</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -85,15 +85,13 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('admin.comments.edit', ['id' => $comment->id]) }}" class="btn btn-warning">Edit</a>
-                            <a href="{{ route('admin.comments.show', ['id' => $comment->id]) }}" class="btn btn-primary">Detail</a>
+                            <a href="{{ route('admin.comments.edit', ['id' => $comment->id]) }}" class="btn btn-warning btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="{{ route('admin.comments.show', ['id' => $comment->id]) }}" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail"><i class="fas fa-info"></i></i></a>
 
                             <form onsubmit="return confirm('Move comment to trash?')" class="d-inline" action="{{route('admin.comments.destroy', ['id' => $comment->id ])}}" method="POST">
                                 @method('delete')
                                 @csrf
-
-                                <button type="submit" value="Trash" class="btn btn-danger">
-                                    Trash
+                                <button type="submit" class="btn btn-danger btn-action" data-toggle="tooltip" title="Trash"><i class="fas fa-trash"></i>
                                 </button>
                             </form>
                         </td>

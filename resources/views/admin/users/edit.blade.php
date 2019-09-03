@@ -1,13 +1,13 @@
 @extends("admin.app")
 
-@section("title") User @endsection
+@section("title") Pengguna @endsection
 
-@section("header") Edit User @endsection
+@section("header") Edit Pengguna @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Users</a></div>
-<div class="breadcrumb-item active">Edit User</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Pengguna</a></div>
+<div class="breadcrumb-item active">Edit Pengguna</div>
 @endsection
 
 @section("content")
@@ -20,21 +20,21 @@
                     @method('patch')
                     @csrf
                     <div class="form-group">
-                        <label>Full Name</label>
+                        <label>Nama Lengkap</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $user->name }}">
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>Email Pengguna</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $user->email }}">
                         @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Avatar Image</label>
+                        <label>Foto Profile</label>
                         <input type="file" class="form-control pb-5" name="avatar" id="avatar">
                     </div>
 

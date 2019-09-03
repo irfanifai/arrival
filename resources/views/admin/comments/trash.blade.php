@@ -1,13 +1,13 @@
 @extends('admin.app')
 
-@section("title") Comment @endsection
+@section("title") Komentar @endsection
 
-@section("header") Trash Comment @endsection
+@section("header") Trash Komentar @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.comments.index') }}">Comment</a></div>
-<div class="breadcrumb-item active">Trash Comment</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.comments.index') }}">Komentar</a></div>
+<div class="breadcrumb-item active">Trash Komentar</div>
 @endsection
 
 @section('content')
@@ -60,9 +60,9 @@
                 <table class="table table-striped table-md">
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Comment</th>
-                    <th>Post</th>
+                    <th>Nama</th>
+                    <th>Isi Komentar</th>
+                    <th>Judul Artikel</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>

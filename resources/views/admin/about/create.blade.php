@@ -5,7 +5,7 @@
 @section("header") About @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
 <div class="breadcrumb-item active">About</div>
 @endsection
 
@@ -17,14 +17,14 @@
                 <form enctype="multipart/form-data" method="POST" action="{{ route('admin.about.store') }}">
                     @csrf
                     <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{ old('title') }}" placeholder="your title">
+                        <label>Judul</label>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{ old('title') }}" placeholder="judul">
                         @error('title')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Content</label>
+                        <label>Isi</label>
                         {!! Form::textarea('body', null, ['id' => 'content', 'class' => $errors->has('body') ? 'form-control is-invalid' : 'form-control']) !!}
                         @if ($errors->has('body'))
                             <span class="invalid-feedback">
@@ -33,7 +33,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label>Featured Image</label>
+                        <label>Gambar Utama</label>
                         <input type="file" class="form-control pb-5" name="featured" id="featured">
                     </div>
 

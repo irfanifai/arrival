@@ -18,23 +18,23 @@ class PostsController extends Controller
         $keyword = $request->get('keyword') ? $request->get('keyword') : '';
 
         if ($status) {
-            $posts = \App\Post::with(['user', 'category'])
+            $posts = Post::with(['user', 'category'])
             ->where('status')
             ->paginate(10);
         } else {
-            $posts = \App\Post::with(['user', 'category'])
+            $posts = Post::with(['user', 'category'])
             ->paginate(10);
         }
 
         $filterKeyword = $request->get('keyword');
 
         if ($status) {
-            $posts = \App\Post::with(['user', 'category'])
+            $posts = Post::with(['user', 'category'])
             ->where('title', "LIKE", "%$keyword%")
             ->where('status', strtoupper($status))
             ->paginate(10);
         } else {
-            $posts = \App\Post::with(['user', 'category'])
+            $posts = Post::with(['user', 'category'])
             ->where("title", "LIKE", "%$keyword%")
             ->paginate(10);
         }
@@ -91,11 +91,11 @@ class PostsController extends Controller
         if ($request->get('status') == 1) {
             return redirect()
                 ->route('admin.posts.index')
-                ->with('status', 'Posts successfully saved and published');
+                ->with('status', 'Artikel berhasil disimpan dan dipublis');
         } else {
             return redirect()
                 ->route('admin.posts.index')
-                ->with('status', 'Posts saved as draft');
+                ->with('status', 'Artikel disimpan sebagai draft');
         }
 
     }
@@ -166,7 +166,7 @@ class PostsController extends Controller
         }
 
         return redirect()->route('admin.posts.index')
-            ->with('status', 'Posts succesfully updated');
+            ->with('status', 'Artikel berhasil diupdate');
     }
 
     /**
@@ -177,34 +177,34 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        $post = \App\Post::findOrFail($id);
+        $post = Post::findOrFail($id);
 
         $post->delete();
 
         return redirect()->route('admin.posts.index')
-            ->with('status', 'Posts successfully moved to trash');
+            ->with('status', 'Artikel berhasil dipindahkan ke trash');
     }
 
     public function trash()
     {
-        $posts = \App\Post::onlyTrashed()->paginate(10);
+        $posts = Post::onlyTrashed()->paginate(10);
 
         return view('admin.posts.trash', ['posts' => $posts]);
     }
 
     public function restore($id)
     {
-        $post = \App\Post::withTrashed()->findOrFail($id);
+        $post = Post::withTrashed()->findOrFail($id);
 
         if ($post->trashed()) {
             $post->restore();
         } else {
             return redirect()->route('admin.posts.trash')
-                ->with('status', 'Post is not in trash');
+                ->with('status', 'Tidak dapat menghapus artikel aktif secara permanen');
         }
 
         return redirect()->route('admin.posts.trash')
-            ->with('status', 'Post successfully restored');
+            ->with('status', 'Artikel berhasil di restore');
     }
 
     public function deletePermanent($id)
@@ -213,12 +213,12 @@ class PostsController extends Controller
 
         if (!$post->trashed()) {
             return redirect()->route('admin.posts.index')
-                ->with('status', 'Post is not in trash!');
+                ->with('status', 'Artikel tidak berada di trash');
         } else {
             $post->forceDelete();
 
             return redirect()->route('admin.posts.index')
-                ->with('status', 'Post permanently deleted!');
+                ->with('status', 'Artikel dihapus secara permanen');
         }
     }
 

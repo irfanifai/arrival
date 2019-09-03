@@ -1,12 +1,12 @@
 @extends('admin.app')
 
-@section("title") User @endsection
+@section("title") Pengguna @endsection
 
-@section("header") List Users @endsection
+@section("header") Daftar Pengguna @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item active">Users</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item active">Pengguna</div>
 @endsection
 
 @section('content')
@@ -26,10 +26,10 @@
                     <form action="{{ route('admin.users.index') }}">
                         <div class="input-group mb-3">
                             <input value="{{Request::get('keyword')}}" name="keyword" class="form-control col-md-10"
-                            type="text" placeholder="filter berdasarkan name"/>
+                            type="text" placeholder="cari berdasarkan nama"/>
 
                             <div class="input-group-append">
-                                <input type="submit"value="Filter" class="btn btn-primary">
+                                <input type="submit"value="Cari" class="btn btn-primary">
                             </div>
                         </div>
                     </form>
@@ -41,9 +41,9 @@
                 <tr>
                     <th>#</th>
                     <th>Foto</th>
-                    <th>Name</th>
+                    <th>Nama</th>
                     <th>Email</th>
-                    <th>Created At</th>
+                    <th>Dibuat</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -59,7 +59,11 @@
                         </td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->created_at }}</td>
+                        @php
+                        $date = $user->created_at;
+                        $date = date( "d M Y h:i", strtotime($date));
+                        @endphp
+                        <td>{{ $date }}</td>
                         <td>
                             @if($user->status == "ACTIVE")
                             <span class="badge badge-success">
@@ -72,15 +76,13 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}" class="btn btn-warning">Edit</a>
-                            <a href="{{ route('admin.users.show', ['id' => $user->id]) }}" class="btn btn-primary">Detail</a>
+                            <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}" class="btn btn-warning btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                            <a href="{{ route('admin.users.show', ['id' => $user->id]) }}" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail"><i class="fas fa-info"></i></i></a>
 
-                            <form onsubmit="return confirm('Delete this user permanently?')" class="d-inline" action="{{route('admin.users.destroy', ['id' => $user->id ])}}" method="POST">
+                            <form onsubmit="return confirm('Move user to trash?')" class="d-inline" action="{{route('admin.users.destroy', ['id' => $user->id ])}}" method="POST">
                                 @method('delete')
                                 @csrf
-
-                                <button type="submit" value="Delete" class="btn btn-danger">
-                                    Delete
+                                <button type="submit" class="btn btn-danger btn-action" data-toggle="tooltip" title="Trash"><i class="fas fa-trash"></i>
                                 </button>
                             </form>
                         </td>
