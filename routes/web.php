@@ -26,40 +26,47 @@ Route::get('/about', 'IndexController@about')->name('about');
 Route::get('/contact', 'IndexController@contact')->name('contact.index');
 Route::post('/contact', 'IndexController@contactStore')->name('contact.store');
 
-Auth::routes();
 
-// Dashboard/Home
-Route::get('/admin/home', 'HomeController@index', ['as' => 'admin'])->name('admin.home');
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    // Authentication Routes...
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+    // Admin Login Routes
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+});
 
-// Users
-Route::resource('/admin/users', 'UsersController', ['as' => 'admin']);
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
+    // Halaman Utama
+    Route::get('/home', 'HomeController@index')->name('home');
+    // Pengguna
+    Route::resource('users', 'UsersController');
+    // Kategori
+    Route::get('categories/trash', 'CategoriesController@trash')->name('categories.trash');
+    Route::get('categories/{id}/restore', 'CategoriesController@restore')->name('categories.restore');
+    Route::delete('categories/{id}/delete-permanent', 'CategoriesController@deletePermanent')->name('categories.delete-permanent');
+    Route::resource('categories', 'CategoriesController');
+    Route::get('ajax/categories/search','CategoriesController@ajaxSearch');
+    // Artikel
+    Route::get('posts/trash', 'PostsController@trash')->name('posts.trash');
+    Route::get('posts/{id}/restore', 'PostsController@restore')->name('posts.restore');
+    Route::delete('posts/{id}/delete-permanent', 'PostsController@deletePermanent')->name('posts.delete-permanent');
+    Route::resource('posts', 'PostsController');
+    // Komentar
+    Route::get('comments/trash', 'CommentsController@trash')->name('comments.trash');
+    Route::get('comments/{id}/restore', 'CommentsController@restore')->name('comments.restore');
+    Route::delete('comments/{id}/delete-permanent', 'CommentsController@deletePermanent')->name('comments.delete-permanent');
+    Route::resource('comments', 'CommentsController', ['except' => ['create', 'store']]);
+    // Pengaturan Footer
+    Route::get('settings', 'SettingsController@index')->name('settings.index');
+    Route::post('settings', 'SettingsController@store')->name('settings.store');
+    // Tentang
+    Route::resource('about', 'AboutController');
+    // Pesan
+    Route::resource('messages', 'MessagesController');
+});
 
-// Categories
-Route::get('/admin/categories/trash', 'CategoriesController@trash')->name('admin.categories.trash');
-Route::get('/admin/categories/{id}/restore', 'CategoriesController@restore')->name('admin.categories.restore');
-Route::delete('/admin/categories/{id}/delete-permanent', 'CategoriesController@deletePermanent')->name('admin.categories.delete-permanent');
-Route::resource('/admin/categories', 'CategoriesController', ['as' => 'admin']);
 
-Route::get('/admin/ajax/categories/search','CategoriesController@ajaxSearch', ['as' => 'admin']);
-
-// Post
-Route::get('/admin/posts/trash', 'PostsController@trash')->name('admin.posts.trash');
-Route::get('/admin/posts/{id}/restore', 'PostsController@restore')->name('admin.posts.restore');
-Route::delete('/admin/posts/{id}/delete-permanent', 'PostsController@deletePermanent')->name('admin.posts.delete-permanent');
-Route::resource('/admin/posts', 'PostsController', ['as' => 'admin']);
-
-// Comments
-Route::get('/admin/comments/trash', 'CommentsController@trash')->name('admin.comments.trash');
-Route::get('/admin/comments/{id}/restore', 'CommentsController@restore')->name('admin.comments.restore');
-Route::delete('/admin/comments/{id}/delete-permanent', 'CommentsController@deletePermanent')->name('admin.comments.delete-permanent');
-Route::resource('/admin/comments', 'CommentsController', ['as' => 'admin', 'except' => ['create', 'store']]);
-
-// Settings
-Route::get('/admin/settings', 'SettingsController@index')->name('admin.settings.index');
-Route::post('/admin/settings', 'SettingsController@store')->name('admin.settings.store');
-
-// About
-Route::resource('/admin/about', 'AboutController', ['as' => 'admin']);
-
-// Admin Message
-Route::resource('/admin/messages', 'MessagesController', ['as' => 'admin']);

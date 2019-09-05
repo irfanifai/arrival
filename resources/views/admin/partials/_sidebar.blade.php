@@ -10,14 +10,14 @@
             <li class="menu-header">Admin</li>
             <li><a class="nav-link" href="{{ route('admin.home') }}"><i class="fas fa-home"></i> <span>Halaman Utama</span></a></li>
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Pengguna</span></a>
+                <a href="{{ route('admin.users.index') }}" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Pengguna</span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ route('admin.users.index') }}">Daftar Pengguna</a></li>
                     <li><a href="{{ route('admin.users.create') }}">Buat Pengguna Baru</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-edit"></i> <span>Blog Artikel</span></a>
+                <a href="{{ route('admin.posts.index') }}" class="nav-link has-dropdown"><i class="far fa-edit"></i> <span>Blog Artikel</span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ route('admin.posts.index') }}">Semua Artikel</a></li>
                     <li><a href="{{ route('admin.posts.create') }}">Buat Artikel</a></li>
@@ -31,7 +31,7 @@
         </ul>
 
         <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="{{ route('logout') }}" class="btn btn-primary btn-lg btn-block btn-icon-split">
+            <a href="{{ route('admin.logout') }}" class="btn btn-primary btn-lg btn-block btn-icon-split">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
         </div>

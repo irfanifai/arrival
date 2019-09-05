@@ -1,12 +1,12 @@
 @extends('auth.app')
 
-@section("title") Forgot Password @endsection
+@section("title") Lupa Password @endsection
 
 @section('content')
 <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
 
     <div class="card card-primary">
-        <div class="card-header"><h4>{{ __('Forgot Password') }}</h4></div>
+        <div class="card-header"><h4>{{ __('Lupa Password') }}</h4></div>
 
         @if (session('status'))
         <div class="alert alert-success alert-dismissible fade show mx-4">
@@ -18,7 +18,7 @@
         @endif
 
         <div class="card-body">
-        <form method="POST" action="{{ route('password.email') }}">
+        <form method="POST" action="{{ route('admin.password.email') }}">
         @csrf
             <div class="form-group">
             <label for="email">{{ __('E-Mail Address') }}</label>
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="simple-footer">
-        Copyright &copy; Arrival 2019
+        Copyright &copy; <a href="{{ url('/') }}">Arrival</a> 2019
     </div>
 </div>
 @endsection

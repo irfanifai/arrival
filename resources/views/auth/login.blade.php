@@ -9,7 +9,7 @@
         <div class="card-header"><h4>{{ __('Login') }}</h4></div>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('admin.login') }}">
                 @csrf
                 <div class="form-group">
                 <label for="email">{{ __('E-Mail Address') }}</label>
@@ -25,9 +25,9 @@
                 <div class="d-block">
                     <label for="password" class="control-label">{{ __('Password') }}</label>
                     <div class="float-right">
-                    @if (Route::has('password.request'))
-                        <a class="text-small" href="{{ route('password.request') }}">
-                            {{ __('Forgot Password?') }}
+                    @if (Route::has('admin.password.request'))
+                        <a class="text-small" href="{{ route('admin.password.request') }}">
+                            {{ __('Lupa Password?') }}
                         </a>
                     @endif
                     </div>
@@ -43,7 +43,7 @@
                 <div class="form-group">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me" {{ old('remember') ? 'checked' : '' }}>
-                    <label class="custom-control-label" for="remember-me"> {{ __('Remember Me') }}</label>
+                    <label class="custom-control-label" for="remember-me"> {{ __('Ingat Saya') }}</label>
                 </div>
                 </div>
 
@@ -54,14 +54,10 @@
                 </div>
             </form>
 
-    <div class="mb-3 text-muted text-center">
-        Don't have an account? <a href="{{ route('register') }}">Create Account</a>
-    </div>
-
         </div>
     </div>
     <div class="simple-footer">
-        Copyright &copy; Arrival 2019
+        Copyright &copy; <a href="{{ url('/') }}">Arrival</a> 2019
     </div>
 
     </div>
