@@ -16,7 +16,6 @@
         <div class="card">
             <div class="card-body">
                 {!! Form::model($about, ['route' => ['admin.about.update', $about->id], 'method' => 'PUT']) !!}
-                    @method('patch')
                     @csrf
                     <div class="form-group">
                         <label for="title">Judul</label>
@@ -29,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <label>Isi</label>
-                        {!! Form::textarea('body', null, ['id' => 'content', 'class' => $errors->has('body') ? 'form-control is-invalid' : 'form-control']) !!}
+                        {!! Form::textarea('body', null, ['id' => 'body', 'class' => $errors->has('body') ? 'form-control is-invalid' : 'form-control']) !!}
                         @if ($errors->has('body'))
                             <span class="invalid-feedback">
                                 <strong>{{ $errors->first('body') }}</strong>

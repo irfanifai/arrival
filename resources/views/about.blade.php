@@ -29,7 +29,7 @@
             @foreach ($abouttwo as $about)
                 @if ($about->id == 2)
                 <h4>{{ $about->title }}</h4>
-                <p>{{ $about->body }}</p>
+                <p>{{ strip_tags($about->body) }}</p>
                 @endif
             @endforeach
             <div class="about-list">

@@ -13,7 +13,6 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('stisla-master/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('stisla-master/assets/css/components.css') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -63,6 +62,8 @@
     <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="{{ asset('js/myscript.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector:'textarea'});</script>
 
     <!-- Template JS File -->
     <script src="{{ asset('stisla-master/assets/js/scripts.js') }}"></script>

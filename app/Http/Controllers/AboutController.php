@@ -93,8 +93,7 @@ class AboutController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required|string|min:5',
-            'body' => 'required|min:20'
+            'title' => 'required|string|min:5'
         ]);
 
         $abouts = About::findOrFail($id);

@@ -81,7 +81,8 @@
                 <div class="article-title">
                     <h2><a href="{{ route('admin.posts.show', ['id' => $post->id]) }}">{{ $post->title }}</a></h2>
                 </div>
-                <p>{!! substr($post->body, 0, 200) !!}...</p>
+                @php $text = $post->body; $max = 150; $title = substr($text, 0, $max) . '...'; @endphp
+                <p>{{ strip_tags($title) }}</p>
                 <div class="article-cta">
                     <a href="{{ route('admin.posts.show', ['id' => $post->id]) }}">Baca lebih lajut<i class="fas fa-chevron-right"></i></a>
                 </div>
