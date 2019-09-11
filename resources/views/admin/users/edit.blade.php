@@ -14,31 +14,45 @@
 <div class="row">
     <div class="col-12 col-md-6 col-lg-12">
         <div class="card">
-
             <div class="card-body">
                 <form enctype="multipart/form-data" method="POST" action="{{route('admin.users.update', ['id'=>$user->id])}}">
                     @method('patch')
                     @csrf
-                    <div class="form-group">
-                        <label>Nama Lengkap</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $user->name }}">
-                        @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Email Pengguna</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $user->email }}">
-                        @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label>Foto Profile</label>
-                        <input type="file" class="form-control pb-5" name="avatar" id="avatar">
+
+                    <div class="row">
+                        <div class="form-group col-md-4 col-4">
+                            <p class="text-center">Foto Profile Saat Ini</p>
+                            <img class="img-thumbnail" src="{{ asset($user->avatar) }}" width="320px" height="280px">
+                        </div>
+                        <div class="form-group col-md-8 col-8 mt-4">
+                            <label>Nama Lengkap</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $user->name }}">
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror <br>
+                            <label>Email Pengguna</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $user->email }}">
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror <br>
+                            <label>Status</label>
+                            {!! Form::select('status', ['ACTIVE' => 'ACTIVE', 'INACTIVE' => 'INACTIVE'], null, ['class' => $errors->has('status') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+                            @if ($errors->has('status'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('status') }}</strong>
+                                </span>
+                            @endif <br>
+                            <label class="text-center">Upload Foto Profile Baru</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input"  name="avatar" id="avatar" accept="image/*" onchange="showMyImage(this)">
+                                <label class="custom-file-label" for="avatar">Pilih Gambar</label>
+                            </div>
+                            <img class="editUser" id="thumbnail" src=""/>
+                        </div>
                     </div>
 
-                    <input class="btn btn-primary" type="submit" value="Save"/>
+                    <button class="btn btn-primary" type="submit">Simpan</button>
+                    <button class="btn btn-secondary" type="reset">Reset</button>
                 </form>
             </div>
     </div>

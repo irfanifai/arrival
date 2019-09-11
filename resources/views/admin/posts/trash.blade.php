@@ -5,7 +5,7 @@
 @section("header") Trash Artikel @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Halaman Utama</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
 <div class="breadcrumb-item"><a href="{{ route('admin.posts.index') }}">Artikel</a></div>
 <div class="breadcrumb-item active">Trash Artikel</div>
 @endsection
@@ -86,7 +86,7 @@
                         <td>
                             <a href="{{ route('admin.posts.restore', ['id' => $post->id]) }}" class="btn btn-success">Restore</a>
 
-                            <form onsubmit="return confirm('Delete this category permanently?')" class="d-inline" action="{{route('admin.posts.delete-permanent', ['id' => $post->id ])}}" method="POST">
+                            <form onsubmit="return confirm('Hapus artikel secara permanen?')" class="d-inline" action="{{route('admin.posts.delete-permanent', ['id' => $post->id ])}}" method="POST">
                                 @method('delete')
                                 @csrf
 

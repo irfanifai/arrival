@@ -32,16 +32,6 @@
                 <p>{{ strip_tags($about->body) }}</p>
                 @endif
             @endforeach
-            <div class="about-list">
-                <ul>
-                    <li><a href="">Always free from repetition</a></li>
-                    <li><a href="">Vestibulum rhoncus nibh quis dui fermentum iaculis.</a></li>
-                    <li><a href="">The standard chunk of Lorem Ipsum</a></li>
-                    <li><a href="">In consequat dolor in lorem egestas ultrices.</a></li>
-                    <li><a href="">Aliquam sollicitudin eros id luctus consequat.</a></li>
-                    <li class="none"><a href="">Always free from repetition</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>

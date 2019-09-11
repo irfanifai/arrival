@@ -13,7 +13,7 @@
 <div class="row text-center">
     <div class="col-12 col-md-6 col-lg-12">
         <div class="card">
-            <div class="card-body p-0">
+            <div class="card-body">
 
             @if (session('status'))
                 <div class="flash-data"
@@ -21,20 +21,17 @@
                 </div>
             @endif
 
-            <div class="row mt-3 ml-3">
-                <div class="col-md-6 ">
-                    <form action="{{ route('admin.users.index') }}">
-                        <div class="input-group mb-3">
-                            <input value="{{Request::get('keyword')}}" name="keyword" class="form-control col-md-10"
-                            type="text" placeholder="cari berdasarkan nama"/>
-
-                            <div class="input-group-append">
-                                <input type="submit"value="Cari" class="btn btn-primary">
-                            </div>
-                        </div>
-                    </form>
+            <div class="float-right mb-4">
+                <form action="{{ route('admin.users.index') }}">
+                <div class="input-group">
+                    <input type="text" class="form-control" value="{{Request::get('keyword')}}" name="keyword" placeholder="cari berdasarkan nama">
+                    <div class="input-group-append">
+                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    </div>
                 </div>
+                </form>
             </div>
+
 
             <div class="table-responsive">
                 <table class="table table-striped table-md">
@@ -52,7 +49,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>
                             @if($user->avatar)
-                                <img src="{{ asset('storage/'.$user->avatar) }}" width="50px">
+                                <img src="{{ asset($user->avatar) }}" width="50px">
                             @else
                                 N/A
                             @endif
@@ -79,10 +76,10 @@
                             <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}" class="btn btn-warning btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                             <a href="{{ route('admin.users.show', ['id' => $user->id]) }}" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail"><i class="fas fa-info"></i></i></a>
 
-                            <form onsubmit="return confirm('Move user to trash?')" class="d-inline" action="{{route('admin.users.destroy', ['id' => $user->id ])}}" method="POST">
+                            <form onsubmit="return confirm('Hapus pengguna secara permanen?')" class="d-inline" action="{{route('admin.users.destroy', ['id' => $user->id ])}}" method="POST">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="btn btn-danger btn-action" data-toggle="tooltip" title="Trash"><i class="fas fa-trash"></i>
+                                <button type="submit" class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"><i class="fas fa-trash"></i>
                                 </button>
                             </form>
                         </td>

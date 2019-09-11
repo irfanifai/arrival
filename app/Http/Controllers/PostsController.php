@@ -165,6 +165,7 @@ class PostsController extends Controller
             $post->featured = $new_featured_path;
         }
 
+        $post->save();
         return redirect()->route('admin.posts.index')
             ->with('status', 'Artikel berhasil diupdate');
     }

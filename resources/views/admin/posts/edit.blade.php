@@ -65,7 +65,7 @@
                     </div>
                     <div class="form-group">
                         <label>Gambar Utama</label>
-                        <input type="file" class="form-control pb-2" name="avatar" id="avatar">
+                        <input type="file" class="form-control pb-2" name="featured" id="featured">
                     </div>
 
                     <input class="btn btn-primary" type="submit" value="Simpan">

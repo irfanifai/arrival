@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -14,7 +15,7 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::paginate(10);
+        $users = User::with('post')->paginate(10);
 
         $filterKeyword = $request->get('keyword');
 
@@ -54,10 +55,14 @@ class UsersController extends Controller
         $new_user->name = $request->get('name');
         $new_user->email = $request->get('email');
         $new_user->password = \Hash::make($request->get('password'));
+        $new_user->status = $request->get('status');
 
-        if($request->file('avatar')){
-            $file = $request->file('avatar')->store('avatars', 'public');
-            $new_user->avatar = $file;
+        if($request->hasFile('avatar')){
+            $file = $request->file('avatar');
+            $name = $file->getClientOriginalName();
+            Storage::putFileAs('public/user', $file, $name);
+
+            $new_user->avatar = 'storage/user/' . $name;
         }
 
         $new_user->save();
@@ -102,24 +107,29 @@ class UsersController extends Controller
     {
         $request->validate([
             "name" => "required|max:30",
-            "email" => "required|email"
+            "email" => "required|email",
+            "status" => "required"
         ]);
 
         $user = User::findOrFail($id);
 
         $user->name = $request->get('name');
         $user->email = $request->get('email');
+        $user->status = $request->get('status');
 
         if ($request->file('avatar')) {
             if ($user->avatar && file_exists(storage_path('app/public/' . $user->avatar))) {
                 \Storage::delete('public/' . $user->avatar);
             }
-            $file = $request->file('avatar')->store('avatars', 'public');
-            $user->avatar = $file;
+            $file = $request->file('avatar');
+            $name = $file->getClientOriginalName();
+            Storage::putFileAs('public/user', $file, $name);
+
+            $user->avatar = 'storage/user/' . $name;
         }
 
         $user->save();
-        return redirect()->route('admin.users.index', ['id' => $id])
+        return redirect()->route('admin.users.index')
             ->with('status', 'User berhasil diupdate');
     }
 

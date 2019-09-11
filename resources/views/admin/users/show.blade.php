@@ -12,18 +12,25 @@
 
 @section("content")
 <div class="row">
-    <div class="col-12 col-md-6 col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="media">
-                    @if($user->avatar)
-                        <img class="mr-3" src="{{ asset('storage/'. $user->avatar) }}" width="100px" class="rounded-circle author-box-picture">
-                        @else
-                        <p class="mr-5">No avatar</p>
-                        @endif
-                    <div class="media-body">
-                    <p class="mt-0"><b>Nama</b> : {{ $user->name }}</p>
-                    <p class="mt-0"><b>Email</b> : {{ $user->email }}</p>
+    <div class="col-12 col-md-12 col-lg-5">
+        <div class="card profile-widget">
+            <div class="profile-widget-header">
+                @if($user->avatar)
+                    <img alt="foto profile pengguna" src="{{ asset($user->avatar) }}" class="rounded-circle profile-widget-picture">
+                @else
+                    <p class="mr-5">No avatar</p>
+                @endif
+                <div class="profile-widget-items">
+                    <div class="profile-widget-item">
+                        <div class="profile-widget-item-label">Artikel</div>
+                        <div class="profile-widget-item-value">{{ $user->post()->count() }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-widget-description">
+                <div class="profile-widget-name">{{ $user->name }}
+                    <div class="text-muted d-inline font-weight-normal">
+                        <div class="slash"></div> {{ $user->email }}</div>
                     </div>
                 </div>
             </div>
