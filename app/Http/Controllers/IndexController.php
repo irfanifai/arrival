@@ -6,7 +6,7 @@ use App\Setting;
 use App\Post;
 use App\Comment;
 use App\About;
-use App\Contact;
+use App\Message;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -77,7 +77,7 @@ class IndexController extends Controller
             'message' => 'required|min:5'
         ]);
 
-        Contact::create($request->all());
+        Message::create($request->all());
         return redirect()->route('contact.index')
             ->with('status', 'Pesan berhasil dikirim');
     }

@@ -13,7 +13,7 @@
 <div class="row text-center">
     <div class="col-12 col-md-6 col-lg-12">
         <div class="card">
-            <div class="card-body p-0">
+            <div class="card-body">
 
             @if (session('status'))
                 <div class="flash-data"
@@ -21,21 +21,16 @@
                 </div>
             @endif
 
-            <div class="row mt-3 ml-3">
-                <div class="col-md-6 ">
-                    <form action="{{ route('admin.messages.index') }}">
-                        <div class="input-group mb-3">
-                            <input value="{{Request::get('keyword')}}" name="keyword" class="form-control col-md-10"
-                            type="text" placeholder="cari berdasarkan nama pegirim"/>
-
-                            <div class="input-group-append">
-                                <input type="submit"value="Cari" class="btn btn-primary">
-                            </div>
-                        </div>
-                    </form>
+            <div class="col-md-4 float-right mb-4">
+                <form action="{{ route('admin.messages.index') }}">
+                <div class="input-group">
+                    <input type="text" class="form-control" value="{{Request::get('keyword')}}" name="keyword" placeholder="cari berdasarkan nama pegirim">
+                    <div class="input-group-append">
+                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    </div>
                 </div>
+                </form>
             </div>
-            <br>
 
             <div class="table-responsive">
                 <table class="table table-striped table-md">
@@ -52,7 +47,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $message->name }}</td>
                         <td>{{ $message->email }}</td>
-                        <td>{!! substr($message->message, 0, 40) !!}...</td>
+                        <td>{!! substr($message->message, 0, 10) !!}...</td>
                         @php
                         $date = $message->created_at;
                         $date = date( "d M Y h:i", strtotime($date));
@@ -64,7 +59,7 @@
                             <form onsubmit="return confirm('Hapus Pesan?')" class="d-inline" action="{{route('admin.messages.destroy', ['id' => $message->id ])}}" method="POST">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="btn btn-danger btn-action" data-toggle="tooltip" title="Trash"><i class="fas fa-trash"></i>
+                                <button type="submit" class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"><i class="fas fa-trash"></i>
                                 </button>
                             </form>
                         </td>

@@ -97,16 +97,11 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <button class="btn btn-primary" type="submit">Publish</button>
                     </div>
                 </div>
-                <div class="card-footer bg-transparent">
-                    <button class="btn btn-primary" type="submit">
-                        Publish
-                    </button>
-                </div>
             </form>
-
-
 
         </div>
     </div>
