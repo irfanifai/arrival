@@ -10,7 +10,7 @@
         <div class="single wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
             <div class="blog-to1 service_info">
 
-                <img class="img-responsive sin-on" src="{{asset('storage/' . $post->featured)}}" alt="" />
+                <img class="img-responsive sin-on" src="{{asset($post->featured)}}" alt="" />
                 <div class="blog-top">
                     <div class="blog-left">
                         @php $date = $post->created_at; $date = date( "d", strtotime($date)); $month = $post->created_at; $month = date( "M", strtotime($month)); @endphp

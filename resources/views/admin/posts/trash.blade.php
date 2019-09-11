@@ -14,7 +14,7 @@
 <div class="row text-center">
     <div class="col-12 col-md-6 col-lg-12">
         <div class="card">
-
+            <div class="card-body">
 
             @if (session('status'))
                 <div class="flash-data"
@@ -22,7 +22,7 @@
                 </div>
             @endif
 
-            <div class="row mt-3 ml-3">
+            {{-- <div class="row mt-3 ml-3">
                 <div class="col-md-6 ">
                     <form action="{{route('admin.posts.index')}}">
                         <div class="input-group mb-3">
@@ -35,9 +35,37 @@
                         </div>
                     </form>
                 </div>
+            </div> --}}
+
+            <div class="col-md-4 float-right mb-4">
+                <form action="{{ route('admin.posts.index') }}">
+                <div class="input-group">
+                    <input type="text" class="form-control" value="{{Request::get('name')}}" name="name" placeholder="cari berdasarkan judul artikel">
+                    <div class="input-group-append">
+                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                </form>
             </div>
 
-            <div class="row mb-4 mr-2">
+            <div class=" col-md-8 float-left mb-4">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::get('status') == NULL && Request::path() == 'admin/posts' ? 'active' : ''}}" href="{{route('admin.posts.index')}}">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::get('status') == '1'? 'active' : '' }}" href="{{route('admin.posts.index', ['status' => 1])}}">Publish</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::get('status') == '2'? 'active' : '' }}" href="{{route('admin.posts.index', ['status' => 2])}}">Draft</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::path() == 'admin/posts/trash' ? 'active' : ''}}" href="{{route('admin.posts.trash')}}">Trash</a>
+                    </li>
+                </ul>
+            </div>
+
+            {{-- <div class="row mb-4 mr-2">
                 <div class="col-md-12">
                     <ul class="nav nav-pills justify-content-end">
                         <li class="nav-item">
@@ -54,7 +82,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="table-responsive">
                 <table class="table table-striped table-md">
@@ -108,6 +136,7 @@
                 </tfoot>
 
                 </table>
+            </div>
             </div>
         </div>
     </div>

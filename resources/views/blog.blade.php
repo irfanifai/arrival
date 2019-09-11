@@ -10,7 +10,7 @@
         <div class="single-inline">
                 @foreach ($posts as $post)
                 <div class="blog-to">
-                    <a href="single.html"><img class="img-responsive sin-on blog-margin" src="{{asset('storage/' . $post->featured)}}" alt="" /></a>
+                    <a href="single.html"><img class="img-responsive sin-on blog-margin" src="{{asset($post->featured)}}" alt="" /></a>
                     <div class="blog-top">
                         <div class="blog-left">
                             @php $date = $post->created_at; $date = date( "d", strtotime($date)); $month = $post->created_at; $month = date( "M", strtotime($month)); @endphp

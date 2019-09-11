@@ -15,9 +15,12 @@
     <div class="col-12 col-md-6 col-lg-12">
         <div class="card">
             <div class="card-body">
-                {!! Form::model($post, ['route' => ['admin.posts.update', $post->id], 'method' => 'PUT']) !!}
+                {!! Form::model($post, ['route' => ['admin.posts.update', $post->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
                     @method('patch')
                     @csrf
+                    {{-- <form enctype="multipart/form-data" method="POST" action="{{route('admin.posts.update', ['id'=>$post->id])}}">
+                    @method('patch')
+                    @csrf --}}
                     <div class="form-group">
                         <label for="title">Judul Artikel</label>
                         {!! Form::text('title', null, ['class' => $errors->has('title') ? 'form-control is-invalid' : 'form-control', 'required', 'autofocus']) !!}
@@ -65,10 +68,16 @@
                     </div>
                     <div class="form-group">
                         <label>Gambar Utama</label>
-                        <input type="file" class="form-control pb-2" name="featured" id="featured">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="featured" id="featured" accept="image/*" onchange="showMyImage(this)">
+                            <label class="custom-file-label" for="featured">Pilih Gambar</label>
+                        </div>
+                        <img class="" id="thumbnail" src="">
+                        {{-- <input type="file" class="form-control pb-5" name="featured" id="featured"> --}}
                     </div>
 
-                    <input class="btn btn-primary" type="submit" value="Simpan">
+                    <button class="btn btn-primary" type="submit">Simpan</button>
+                    <button class="btn btn-secondary" type="reset">Reset</button>
                 {!! Form::close() !!}
             </div>
         </div>

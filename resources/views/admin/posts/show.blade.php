@@ -43,7 +43,7 @@
                         </tr>
                         <tr>
                             <th>Gambar Utama</th>
-                            <td><img src="{{asset('storage/' . $posts->featured)}}" alt="Featured Image"  height="450" width="865"></td>
+                            <td><img src="{{asset($posts->featured)}}" alt="Gambar Utama"  height="450" width="865"></td>
                         </tr>
                     </table>
                 </div>

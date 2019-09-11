@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -78,12 +79,12 @@ class PostsController extends Controller
         $new_post->slug = \Str::slug($request->get('title'));
         $new_post->user_id = \Auth::user()->id;
 
-        $featured = $request->file('featured');
+        if ($request->hasFile('featured')) {
+            $file = $request->file('featured');
+            $name = $file->getClientOriginalName();
+            Storage::putFileAs('public/post', $file, $name);
 
-        if($featured){
-            $featured_path = $featured->store('featured', 'public');
-
-            $new_post->featured = $featured_path;
+            $new_post->featured = 'storage/post/' . $name;
         }
 
         $new_post->save();
@@ -135,15 +136,15 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::findOrFail($id);
-
         $this->validate($request, [
             'category_id' => 'required',
             'title' => 'required|string|min:5|unique:posts,title,' . $id,
             'body' => 'required|min:20',
             'status' => 'required',
             'published_at' => 'required'
-        ]);
+            ]);
+
+        $post = Post::findOrFail($id);
 
         $post->title = $request->get('title');
         $post->body = $request->get('body');
@@ -153,21 +154,34 @@ class PostsController extends Controller
         $post->slug = \Str::slug($request->get('title'));
         $post->user_id = \Auth::user()->id;
 
-        $new_featured = $request->file('featured');
+        // $new_featured = $request->file('featured');
 
-        if ($new_featured) {
+        // if ($new_featured) {
+        //     if ($post->featured && file_exists(storage_path('app/public/' . $post->featured))) {
+        //         \Storage::delete('public/' . $post->featured);
+        //     }
+
+        //     $new_featured_path = $new_featured->store('featured', 'public');
+
+        //     $post->featured = $new_featured_path;
+        // }
+
+        if ($request->hasFile('featured')) {
             if ($post->featured && file_exists(storage_path('app/public/' . $post->featured))) {
                 \Storage::delete('public/' . $post->featured);
             }
+            $file = $request->file('featured');
+            $name = $file->getClientOriginalName();
+            Storage::putFileAs('public/post', $file, $name);
 
-            $new_featured_path = $new_featured->store('featured', 'public');
-
-            $post->featured = $new_featured_path;
+            $post->featured = 'storage/post/' . $name;
         }
 
         $post->save();
         return redirect()->route('admin.posts.index')
             ->with('status', 'Artikel berhasil diupdate');
+
+        // return dd($request->all());
     }
 
     /**

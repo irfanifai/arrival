@@ -100,7 +100,8 @@ class CategoriesController extends Controller
         $category = Category::findOrFail($id);
         $category->update($request->all());
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.categories.index')
+            ->with('status', 'Kategori berhasil berhasil diupdate');
 
     }
 

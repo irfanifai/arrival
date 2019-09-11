@@ -2,7 +2,7 @@
     <h4>BLOG TERBARU</h4>
     @foreach ($posts->orderBy('published_at', 'DESC')->limit(6)->get() as $post)
         <figure class="effect-julia">
-            <img src="{{asset('storage/' . $post->featured)}}" alt="img21"/>
+            <img src="{{asset($post->featured)}}" alt="img21"/>
             <figcaption>
             <span>{{ $post->title }}</span>
                 <div>

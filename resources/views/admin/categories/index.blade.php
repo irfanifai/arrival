@@ -13,7 +13,7 @@
 <div class="row text-center">
     <div class="col-12 col-md-6 col-lg-12">
         <div class="card">
-            <div class="card-body p-0">
+            <div class="card-body">
 
             @if (session('status'))
                 <div class="flash-data"
@@ -21,28 +21,27 @@
                 </div>
             @endif
 
-            <div class="row mt-3 ml-3">
-                <div class="col-md-6 ">
-                    <form action="{{route('admin.categories.index')}}">
-                        <div class="input-group mb-3">
-                            <input value="{{Request::get('name')}}" name="name" class="form-control col-md-10"
-                            type="text" placeholder="cari berdasarkan judul kategori">
-
-                            <div class="input-group-append">
-                                <input type="submit"value="Cari" class="btn btn-primary">
-                            </div>
-                        </div>
-                    </form>
+            <div class="col-md-4 float-right mb-4">
+                <form action="{{ route('admin.categories.index') }}">
+                <div class="input-group">
+                    <input type="text" class="form-control" value="{{Request::get('name')}}" name="name" placeholder="cari berdasarkan judul kategori">
+                    <div class="input-group-append">
+                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    </div>
                 </div>
+                </form>
             </div>
 
-            <div class="row mr-1">
-                <div class="col-md-12 text-right">
-                    <a href="{{route('admin.categories.create')}}" class="btn btn-primary">Buat Kategori Baru</a>
-                    <a href="{{route('admin.categories.trash')}}" class="btn btn-primary">Trash</a>
-                </div>
+            <div class=" col-md-8 float-left mb-3">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a href="{{route('admin.categories.create')}}" class="btn btn-primary">Buat Kategori Baru</a>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a href="{{route('admin.categories.trash')}}" class="btn btn-primary">Trash</a>
+                    </li>
+                </ul>
             </div>
-            <br>
 
             <div class="table-responsive">
                 <table class="table table-striped table-md">
@@ -60,7 +59,7 @@
                         <td>
                             <a href="{{ route('admin.categories.edit', ['id' => $categorie->id]) }}" class="btn btn-warning btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 
-                            <form onsubmit="return confirm('Move kategori to trash?')" class="d-inline" action="{{route('admin.categories.destroy', ['id' => $categorie->id ])}}" method="POST">
+                            <form onsubmit="return confirm('Pindahkan kategori to trash?')" class="d-inline" action="{{route('admin.categories.destroy', ['id' => $categorie->id ])}}" method="POST">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-action" data-toggle="tooltip" title="Trash"><i class="fas fa-trash"></i>
