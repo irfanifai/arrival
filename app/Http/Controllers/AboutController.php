@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
@@ -46,12 +47,12 @@ class AboutController extends Controller
         $about->title = $request->get('title');
         $about->body = $request->get('body');
 
-        $featured = $request->file('featured');
+        if ($request->hasFile('featured')) {
+            $file = $request->file('featured');
+            $name = $file->getClientOriginalName();
+            Storage::putFileAs('public/about', $file, $name);
 
-        if ($featured) {
-            $featured_path = $featured->store('featured', 'public');
-
-            $about->featured = $featured_path;
+            $about->featured = 'storage/about/' . $name;
         }
 
         $about->save();
@@ -100,24 +101,22 @@ class AboutController extends Controller
 
         $abouts->title = $request->get('title');
         $abouts->body = $request->get('body');
-        $new_featured = $request->file('featured');
 
-        if ($new_featured) {
+        if ($request->hasFile('featured')) {
             if ($abouts->featured && file_exists(storage_path('app/public/' . $abouts->featured))) {
                 \Storage::delete('public/' . $abouts->featured);
             }
+            $file = $request->file('featured');
+            $name = $file->getClientOriginalName();
+            Storage::putFileAs('public/about', $file, $name);
 
-            $new_featured_path = $new_featured->store('featured', 'public');
-
-            $abouts->featured = $new_featured_path;
+            $abouts->featured = 'storage/about/' . $name;
         }
 
         $abouts->save();
 
         return redirect()->route('admin.about.index')
             ->with('status', 'About berhasil diupdate');
-
-        // return $request;
     }
 
     /**

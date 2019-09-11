@@ -19,29 +19,26 @@
             </div>
         @endif
 
-        <article class="article article-style-c">
+        <div class="row">
             @foreach ($about as $about)
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="nav nav-pills justify-content-end">
-                        <li class="nav-item">
-                            <a href="{{ route('admin.about.edit', ['id' => $about->id]) }}" class="nav-link">Edit</a>
-                        </li>
-                    </ul>
+            <div class="col-md-6">
+                <ul class="nav nav-pills justify-content-end">
+                    <li class="nav-item">
+                        <a href="{{ route('admin.about.edit', ['id' => $about->id]) }}" class="nav-link">Edit</a>
+                    </li>
+                </ul>
+
+                <div class="card">
+                    <img src="{{asset($about->featured)}}" class="card-img-top" alt="featured">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $about->title }}</h5>
+                        <p class="card-text">{!! substr($about->body, 0, 450) !!}...</p>
+                    </div>
                 </div>
             </div>
-
-                <div class="article-header">
-                    <div class="article-image" data-background="{{asset('storage/' . $about->featured)}}"></div>
-                </div>
-                <div class="article-details">
-                    <div class="article-title">
-                        <h2><a href="#">{{ $about->title }}</a></h2>
-                    </div>
-                    <p>{{ strip_tags($about->body) }}</p>
-                </div>
             @endforeach
-        </article>
+        </div>
+
     </div>
 </div>
 @endsection

@@ -15,7 +15,7 @@
     <div class="col-12 col-md-6 col-lg-12">
         <div class="card">
             <div class="card-body">
-                {!! Form::model($about, ['route' => ['admin.about.update', $about->id], 'method' => 'PUT']) !!}
+                {!! Form::model($about, ['route' => ['admin.about.update', $about->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
                     @csrf
                     <div class="form-group">
                         <label for="title">Judul</label>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <label>Isi</label>
-                        {!! Form::textarea('body', null, ['id' => 'body', 'class' => $errors->has('body') ? 'form-control is-invalid' : 'form-control']) !!}
+                        {!! Form::textarea('body', null, ['id' => 'content', 'class' => $errors->has('body') ? 'form-control is-invalid' : 'form-control']) !!}
                         @if ($errors->has('body'))
                             <span class="invalid-feedback">
                                 <strong>{{ $errors->first('body') }}</strong>
@@ -37,9 +37,15 @@
                     </div>
                     <div class="form-group">
                         <label>Gambar Utama</label>
-                        <input type="file" class="form-control pb-3" name="featured" id="featured">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="featured" id="featured" accept="image/*" onchange="showMyImage(this)">
+                            <label class="custom-file-label" for="featured">Pilih Gambar</label>
+                        </div>
+                        <img class="createPost" id="thumbnail" src="">
                     </div>
-                    <input class="btn btn-primary" type="submit" value="Simpan">
+
+                    <button class="btn btn-primary" type="submit">Simpan</button>
+                    <button class="btn btn-secondary" type="reset">Reset</button>
                 {!! Form::close() !!}
             </div>
         </div>

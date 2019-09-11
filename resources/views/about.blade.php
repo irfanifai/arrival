@@ -11,11 +11,11 @@
                 @if ($about->id == 1)
                     <div class="about-top">
                         <div class="col-md-5 about-top-left">
-                            <img src="{{ asset('storage/' . $about->featured) }}" class="img-responsive" alt=""/>
+                            <img src="{{ asset($about->featured) }}" class="img-responsive" alt=""/>
                         </div>
                         <div class="col-md-7 about-top-right">
                             <h4>{{ $about->title }}</h4>
-                            <p>{{ strip_tags($about->body) }}</p>
+                            <p>{!! $about->body !!}</p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -29,7 +29,7 @@
             @foreach ($abouttwo as $about)
                 @if ($about->id == 2)
                 <h4>{{ $about->title }}</h4>
-                <p>{{ strip_tags($about->body) }}</p>
+                <p>{!! $about->body !!}</p>
                 @endif
             @endforeach
         </div>

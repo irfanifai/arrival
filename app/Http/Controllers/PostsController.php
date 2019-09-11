@@ -154,18 +154,6 @@ class PostsController extends Controller
         $post->slug = \Str::slug($request->get('title'));
         $post->user_id = \Auth::user()->id;
 
-        // $new_featured = $request->file('featured');
-
-        // if ($new_featured) {
-        //     if ($post->featured && file_exists(storage_path('app/public/' . $post->featured))) {
-        //         \Storage::delete('public/' . $post->featured);
-        //     }
-
-        //     $new_featured_path = $new_featured->store('featured', 'public');
-
-        //     $post->featured = $new_featured_path;
-        // }
-
         if ($request->hasFile('featured')) {
             if ($post->featured && file_exists(storage_path('app/public/' . $post->featured))) {
                 \Storage::delete('public/' . $post->featured);
@@ -180,8 +168,6 @@ class PostsController extends Controller
         $post->save();
         return redirect()->route('admin.posts.index')
             ->with('status', 'Artikel berhasil diupdate');
-
-        // return dd($request->all());
     }
 
     /**

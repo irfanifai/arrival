@@ -18,9 +18,6 @@
                 {!! Form::model($post, ['route' => ['admin.posts.update', $post->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
                     @method('patch')
                     @csrf
-                    {{-- <form enctype="multipart/form-data" method="POST" action="{{route('admin.posts.update', ['id'=>$post->id])}}">
-                    @method('patch')
-                    @csrf --}}
                     <div class="form-group">
                         <label for="title">Judul Artikel</label>
                         {!! Form::text('title', null, ['class' => $errors->has('title') ? 'form-control is-invalid' : 'form-control', 'required', 'autofocus']) !!}

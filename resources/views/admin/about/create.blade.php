@@ -34,10 +34,15 @@
                     </div>
                     <div class="form-group">
                         <label>Gambar Utama</label>
-                        <input type="file" class="form-control pb-5" name="featured" id="featured">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="featured" id="featured" accept="image/*" onchange="showMyImage(this)">
+                            <label class="custom-file-label" for="featured">Pilih Gambar</label>
+                        </div>
+                        <img class="createPost" id="thumbnail" src="">
                     </div>
 
-                    <input class="btn btn-primary" type="submit" value="Save">
+                    <button class="btn btn-primary" type="submit">Simpan</button>
+                    <button class="btn btn-secondary" type="reset">Reset</button>
                 </form>
             </div>
         </div>
