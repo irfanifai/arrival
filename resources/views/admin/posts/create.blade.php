@@ -67,7 +67,6 @@
                             <label class="custom-file-label" for="featured">Pilih Gambar</label>
                         </div>
                         <img class="createPost" id="thumbnail" src="">
-                        {{-- <input type="file" class="form-control pb-5" name="featured" id="featured"> --}}
                     </div>
 
                     <button class="btn btn-primary" type="submit">Simpan</button>

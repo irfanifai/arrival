@@ -72,8 +72,7 @@
                             <input type="file" class="custom-file-input" name="featured" id="featured" accept="image/*" onchange="showMyImage(this)">
                             <label class="custom-file-label" for="featured">Pilih Gambar</label>
                         </div>
-                        <img class="" id="thumbnail" src="">
-                        {{-- <input type="file" class="form-control pb-5" name="featured" id="featured"> --}}
+                        <img class="createPost" id="thumbnail" src="">
                     </div>
 
                     <button class="btn btn-primary" type="submit">Simpan</button>

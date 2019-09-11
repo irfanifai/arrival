@@ -14,7 +14,7 @@
 <div class="row text-center">
     <div class="col-12 col-md-6 col-lg-12">
         <div class="card">
-            <div class="card-body p-0">
+            <div class="card-body">
 
             @if (session('status'))
                 <div class="flash-data"
@@ -22,38 +22,32 @@
                 </div>
             @endif
 
-            <div class="row mt-1">
-                <div class="col-md-6 ">
-                    <form action="{{route('admin.categories.index')}}">
-                        <div class="input-group mb-3">
-                            <input value="{{Request::get('name')}}" name="name" class="form-control col-md-10"
-                            type="text" placeholder="filter berdasarkan title"/>
-
-                            <div class="input-group-append">
-                                <input type="submit"value="Filter" class="btn btn-primary">
-                            </div>
-                        </div>
-                    </form>
+            <div class="col-md-4 float-right mb-4">
+                <form action="{{ route('admin.comments.index') }}">
+                <div class="input-group">
+                    <input type="text" class="form-control" value="{{Request::get('keyword')}}" name="keyword" placeholder="cari berdasarkan nama">
+                    <div class="input-group-append">
+                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    </div>
                 </div>
+                </form>
             </div>
 
-            <div class="row mb-4 mr-2">
-                <div class="col-md-12">
-                    <ul class="nav nav-pills justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link {{Request::get('status') == NULL && Request::path() == 'admin/comments' ? 'active' : ''}}" href="{{route('admin.comments.index')}}">All</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{Request::get('status') == '1'? 'active' : '' }}" href="{{route('admin.comments.index', ['status' => 1])}}">Publish</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{Request::get('status') == '2'? 'active' : '' }}" href="{{route('admin.comments.index', ['status' => 2])}}">Hide</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{Request::path() == 'admin/comments/trash' ? 'active' : ''}}" href="{{route('admin.comments.trash')}}">Trash</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class=" col-md-8 float-left mb-4">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::get('status') == NULL && Request::path() == 'admin/comments' ? 'active' : ''}}" href="{{route('admin.comments.index')}}">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::get('status') == '1'? 'active' : '' }}" href="{{route('admin.comments.index', ['status' => 1])}}">Publish</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::get('status') == '2'? 'active' : '' }}" href="{{route('admin.comments.index', ['status' => 2])}}">Hide</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{Request::path() == 'admin/comments/trash' ? 'active' : ''}}" href="{{route('admin.comments.trash')}}">Trash</a>
+                    </li>
+                </ul>
             </div>
 
             <div class="table-responsive">

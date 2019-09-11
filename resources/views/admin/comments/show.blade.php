@@ -1,13 +1,13 @@
 @extends("admin.app")
 
-@section("title") Comment @endsection
+@section("title") Komentar @endsection
 
-@section("header") Detail Comment @endsection
+@section("header") Detail Komentar @endsection
 
 @section("breadcrumb")
-<div class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></div>
-<div class="breadcrumb-item"><a href="{{ route('admin.comments.index') }}">Comments</a></div>
-<div class="breadcrumb-item active">Detail Comment</div>
+<div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></div>
+<div class="breadcrumb-item"><a href="{{ route('admin.comments.index') }}">Komentar</a></div>
+<div class="breadcrumb-item active">Detail Komentar</div>
 @endsection
 
 @section("content")
@@ -15,7 +15,7 @@
     <div class="col-12 col-md-6 col-lg-12">
         <div class="card">
             <div class="card-header text-white bg-primary font-weight-bold">
-                Tilte Post : {{ $comments->post->title }}
+                Judul Artikel : {{ $comments->post->title }}
             </div>
             <div class="card-body">
                 <table class="table table-striped">
@@ -24,19 +24,19 @@
                         <td>{{ $comments->id }}</td>
                     </tr>
                     <tr>
-                        <td>Name</td>
+                        <td>Nama Pengirim</td>
                         <td>{{ $comments->name }}</td>
                     </tr>
                     <tr>
-                        <td>Email</td>
+                        <td>Email Pengirim</td>
                         <td>{{ $comments->email }}</td>
                     </tr>
                     <tr>
-                        <td>Comment</td>
+                        <td>Isi Komentar</td>
                         <td>{{ $comments->body }}</td>
                     </tr>
                     <tr>
-                        <td>Time</td>
+                        <td>Tanggal Komentar</td>
                         <td>{{ $comments->created_at }}</td>
                     </tr>
                     <tr>

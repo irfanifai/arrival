@@ -80,7 +80,7 @@
                             <a href="{{ route('admin.posts.edit', ['id' => $post->id]) }}" class="btn btn-warning btn-action mr-1" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                             <a href="{{ route('admin.posts.show', ['id' => $post->id]) }}" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Detail"><i class="fas fa-info"></i></i></a>
 
-                            <form onsubmit="return confirm('Move post to trash?')" class="d-inline" action="{{route('admin.posts.destroy', ['id' => $post->id ])}}" method="POST">
+                            <form onsubmit="return confirm('Pindahkan artikel ke trash?')" class="d-inline" action="{{route('admin.posts.destroy', ['id' => $post->id ])}}" method="POST">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-action" data-toggle="tooltip" title="Trash"><i class="fas fa-trash"></i>

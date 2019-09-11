@@ -54,9 +54,8 @@ var options = {
 
 // $('textarea.coba').ckeditor(options);
 
-
 tinymce.init({
-    selector: 'textarea#basic-example',
+    selector: '#textarea',
     height: 500,
     menubar: false,
     plugins: [

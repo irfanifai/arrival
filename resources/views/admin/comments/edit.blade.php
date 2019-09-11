@@ -20,28 +20,22 @@
                     @csrf
                     <div class="form-group">
                         <label>Nama Lengkap</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $comment->name }}" readonly>
-                        @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <input type="text" class="form-control" value="{{ $comment->name }}" readonly>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $comment->email }}" readonly>
-                        @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <input type="email" class="form-control" value="{{ $comment->email }}" readonly>
                     </div>
                     <div class="form-group">
                         <label>Isi Komentar</label>
-                        <textarea cols="30" rows="10" class="form-control" readonly>{{ $comment->body }}</textarea>
+                        <input type="text" class="form-control" value="{{ $comment->body }}" readonly>
                     </div>
                     <div class="form-group">
                         <label>Status</label>
-                        {!! Form::select('status', [2 => 'Hide', 1 => 'Publish'], null, ['class' => 'form-control', 'required']) !!}
+                        {!! Form::select('status', [1 => 'Publish', 2 => 'Hide'], null, ['class' => 'form-control', 'required']) !!}
                     </div>
 
-                    <input class="btn btn-primary" type="submit" value="Simpan">
+                    <button class="btn btn-primary" type="submit">Simpan</button>
                 </form>
             </div>
         </div>
