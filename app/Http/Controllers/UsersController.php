@@ -105,34 +105,32 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     "name" => "required|max:30",
-        //     "email" => "required|email",
-        //     "status" => "required"
-        // ]);
+        $request->validate([
+            "name" => "required|max:30",
+            "email" => "required|email",
+            "status" => "required"
+        ]);
 
-        // $user = User::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        // $user->name = $request->get('name');
-        // $user->email = $request->get('email');
-        // $user->status = $request->get('status');
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->status = $request->get('status');
 
-        // if ($request->file('avatar')) {
-        //     if ($user->avatar && file_exists(storage_path('app/public/' . $user->avatar))) {
-        //         \Storage::delete('public/' . $user->avatar);
-        //     }
-        //     $file = $request->file('avatar');
-        //     $name = $file->getClientOriginalName();
-        //     Storage::putFileAs('public/user', $file, $name);
+        if ($request->file('avatar')) {
+            if ($user->avatar && file_exists(storage_path('app/public/' . $user->avatar))) {
+                \Storage::delete('public/' . $user->avatar);
+            }
+            $file = $request->file('avatar');
+            $name = $file->getClientOriginalName();
+            Storage::putFileAs('public/user', $file, $name);
 
-        //     $user->avatar = 'storage/user/' . $name;
-        // }
+            $user->avatar = 'storage/user/' . $name;
+        }
 
-        // $user->save();
-        // return redirect()->route('admin.users.index')
-        //     ->with('status', 'User berhasil diupdate');
-
-        dd($request->all());
+        $user->save();
+        return redirect()->route('admin.users.index')
+            ->with('status', 'User berhasil diupdate');
     }
 
     /**

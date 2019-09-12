@@ -68,27 +68,85 @@
     </div>
 </div>
 
-<h2 class="section-title">Blog Artikel</h2>
-<div class="row">
-    @foreach($posts as $post)
-    <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-        <article class="article article-style-b">
-            <div class="article-header">
-                <div class="article-image" data-background="{{asset($post->featured)}}">
-                </div>
+<h2 class="section-title mt-0">All User</h2>
+<div class="row text-center">
+    <div class="col-12 col-md-6 col-lg-12">
+        <div class="card">
+            <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-striped table-md">
+                <tr>
+                    <th>#</th>
+                    <th>Foto</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Dibuat</th>
+                    <th>Status</th>
+                </tr>
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>
+                            @if($user->avatar)
+                                <img src="{{ asset($user->avatar) }}" width="50px">
+                            @else
+                                N/A
+                            @endif
+                        </td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        @php
+                        $date = $user->created_at;
+                        $date = date( "d M Y h:i", strtotime($date));
+                        @endphp
+                        <td>{{ $date }}</td>
+                        <td>
+                            @if($user->status == "ACTIVE")
+                            <span class="badge badge-success">
+                                {{ $user->status }}
+                            </span>
+                            @else
+                            <span class="badge badge-danger">
+                                {{ $user->status }}
+                            </span>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+
+                <tfoot>
+                    <tr>
+                        <td colspan=10>
+                            {{$users->appends(Request::all())->links()}}
+                        </td>
+                    </tr>
+                </tfoot>
+
+                </table>
             </div>
-            <div class="article-details">
-                <div class="article-title">
-                    <h2><a href="{{ route('admin.posts.show', ['id' => $post->id]) }}">{{ $post->title }}</a></h2>
+        </div>
+    </div>
+</div>
+
+<h2 class="section-title ml-3">Latest Posts Artikel</h2>
+<div class="row px-3">
+    @foreach($posts as $post)
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+            <div class="card" style="height: 540px;">
+                <img src="{{asset($post->featured)}}" class="card-img-top" alt="featured" style="height: 200px;">
+                <div class="card-body">
+                    <div class="article-title">
+                        <p style="height: 10px;"><a href="{{ route('admin.posts.show', ['id' => $post->id]) }}">{{ $post->title }}</a></p>
+                    </div>
+                    @php $text = $post->body; $max = 150; $body = substr($text, 0, $max) . '...'; @endphp
+                    <p class="card-text pt-5" style="height: 80px;">{{ strip_tags($body) }}...</p>
                 </div>
-                @php $text = $post->body; $max = 150; $title = substr($text, 0, $max) . '...'; @endphp
-                <p>{{ strip_tags($title) }}</p>
-                <div class="article-cta">
+                <div class="article-cta pt-1 mb-3">
                     <a href="{{ route('admin.posts.show', ['id' => $post->id]) }}">Baca lebih lajut<i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-        </article>
-    </div>
+        </div>
     @endforeach
 </div>
 @endsection

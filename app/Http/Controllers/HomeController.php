@@ -23,7 +23,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = \App\Post::paginate(8);
-        return view('admin.home', compact('posts'));
+        $posts = \App\Post::orderBy('published_at', 'DESC')->paginate(8);
+        $users = \App\User::paginate(8);
+        return view('admin.home', compact('posts', 'users'));
     }
 }
