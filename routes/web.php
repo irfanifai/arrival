@@ -26,6 +26,7 @@ Route::get('/about', 'IndexController@about')->name('about');
 Route::get('/contact', 'IndexController@contact')->name('contact.index');
 Route::post('/contact', 'IndexController@contactStore')->name('contact.store');
 
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     // Authentication Routes...
@@ -36,7 +37,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
     Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
@@ -67,6 +68,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::resource('about', 'AboutController');
     // Pesan
     Route::resource('messages', 'MessagesController');
+    Route::post('messages/send-email', 'MessagesController@sendEmail')->name('messages.email');
 });
 
 
