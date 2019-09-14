@@ -5,12 +5,13 @@
 @section('content')
 <div class="contact">
 	<div class="container">
-        <h3>Contact</h3>
+        <h3>Kontak Kami</h3>
 
             @if (session('status'))
-                <div class="flash-data"
-                    data-flashdata="{{ session('status') }}">
-                </div>
+            <div class="alert alert-info alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ session('status') }}</strong>
+            </div>
             @endif
 
 			<div class="contact-main">
@@ -22,26 +23,26 @@
 						<div class="contact-textarea">
                             {!! Form::open(['route' => 'contact.store', 'method' => 'POST']) !!}
                             @csrf
-								{!! Form::text('name', null, ['class' => $errors->has('name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Full Name', 'required']) !!}
+								{!! Form::text('name', null, ['class' => $errors->has('name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Nama Lengkap', 'required']) !!}
                                 @if ($errors->has('name'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('name') }}</strong>
                                 </span>
                                 @endif
-                                {!! Form::text('email', null, ['class' => $errors->has('email') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Email Address', 'required']) !!}
+                                {!! Form::text('email', null, ['class' => $errors->has('email') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Alamat Email', 'required']) !!}
                                 @if ($errors->has('email'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('email') }}</strong>
                                 </span>
                                 @endif
-                                {!! Form::textarea('message', null, ['id' => 'textarea', 'class' => $errors->has('message') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Message', 'required']) !!}
+                                {!! Form::textarea('message', null, ['id' => 'textarea', 'class' => $errors->has('message') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Pesan', 'required']) !!}
                                 @if ($errors->has('message'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('message') }}</strong>
                                 </span>
                                 @endif
-								<input type="submit" value="SUBMIT" >
-								<input type="reset" value="CLEAR" >
+								<input type="submit" value="Kirim">
+								<input type="reset" value="Hapus">
 							{!! Form::close() !!}
 						</div>
 					</div>

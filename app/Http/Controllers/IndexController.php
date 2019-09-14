@@ -20,7 +20,7 @@ class IndexController extends Controller
     {
         $setting = $this->setting();
         $posts = Post::where('status', 1);
-        $tujuan = Post::where('category_id', 22);
+        $tujuan = Post::where('category_id', 1);
         return view('index', compact('setting', 'posts', 'tujuan'));
     }
 

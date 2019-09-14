@@ -25,7 +25,7 @@
                 </ul>
             </li>
             <li><a class="nav-link" href="{{ route('admin.comments.index') }}"><i class="far fa-comment-alt"></i> <span>Komentar</span></a></li>
-            <li><a class="nav-link" href="{{ route('admin.about.index') }}"><i class="fas fa-info"></i> <span>About</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.about.index') }}"><i class="fas fa-info"></i> <span>Tentang Kami</span></a></li>
             <li><a class="nav-link" href="{{ route('admin.messages.index') }}"><i class="fas fa-envelope"></i></i> <span>Pesan</span></a></li>
             <li><a class="nav-link" href="{{ route('admin.settings.index') }}"><i class="fas fa-cog"></i> <span>Pengaturan Footer</span></a></li>
         </ul>

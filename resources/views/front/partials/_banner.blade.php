@@ -22,14 +22,14 @@ $(function () {
             </li>
             <li>
                 <div class="banner-info">
-                <h2>Enjoy Jakarta</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus posuere odio, et dapibus felis pharetra in. Etiam a dictum lorem, sit amet blandit nibh.</p>
+                <h2>Jelajah Pesona Indonesia</h2>
+                <p>Donec imperdiet justo tortor, non feugiat arcu euismod vel. Mauris id risus et ante commodo finibus nec id neque. Integer ac lectus a sapien rutrum suscipit eleifend feugiat massa.</p>
             </div>
             </li>
             <li>
                 <div class="banner-info">
                 <h2>Indonesia...kenali, cintai!</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus posuere odio, et dapibus felis pharetra in. Etiam a dictum lorem, sit amet blandit nibh.</p>
+                <p>Duis tincidunt est a semper tincidunt. Vivamus nec augue aliquet, iaculis leo in, aliquet lacus. Maecenas sed ipsum sagittis, tempor dui ac, tempus neque.</p>
             </div>
             </li>
         </ul>

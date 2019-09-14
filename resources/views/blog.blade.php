@@ -5,8 +5,7 @@
 @section('content')
 <div class="blog">
 	<div class="container">
-        <h3>Blogs</h3>
-
+        <h3>Blog</h3>
         <div class="single-inline">
                 @foreach ($posts as $post)
                 <div class="blog-to">
@@ -30,17 +29,14 @@
                 @endforeach
             </div>
 
-        <nav>
-            <tr>
-                <td colspan=10>
-                    {{$posts->links()}}
-                </td>
-            </tr>
-        </nav>
-    </div>
-    </div>
-	<!-- //blog -->
-
+            <nav>
+                <tr>
+                    <td colspan=10>
+                        {{$posts->links()}}
+                    </td>
+                </tr>
+            </nav>
+        </div>
 	</div>
 </div>
 @endsection

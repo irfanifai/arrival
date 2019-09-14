@@ -4,13 +4,13 @@
 
 @section('content')
 <div class="single">
-	<div class="container">
-		<h3>{{ $post->title }}</h3>
+	<div class="container" style="margin-top: 30px;">
+		{{-- <h3>{{ $post->title }}</h3> --}}
 
         <div class="single wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
             <div class="blog-to1 service_info">
 
-                <img class="img-responsive sin-on" src="{{asset($post->featured)}}" alt="" />
+                <img class="img-responsive sin-on" src="{{asset($post->featured)}}" alt="" style="width: 1280px; height: 430px;">
                 <div class="blog-top">
                     <div class="blog-left">
                         @php $date = $post->created_at; $date = date( "d", strtotime($date)); $month = $post->created_at; $month = date( "M", strtotime($month)); @endphp
@@ -84,7 +84,7 @@
                             <strong>{{ $errors->first('body') }}</strong>
                         </span>
                         @endif
-                    <input type="submit" class="commentsend" value="Send">
+                    <input type="submit" class="commentsend" value="Kirim">
 				{!! Form::close() !!}
 			</div>
 		</div>

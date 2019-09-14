@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container foot">
     <div class="col-md-3 ftr_navi ftr">
         <h3>Navigation</h3>
         <ul>
-            <li><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="{{ url('/') }}">Beranda</a></li>
+            <li><a href="{{ url('/about') }}">Tentang Kami</a></li>
             <li><a href="{{ url('/blog') }}">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{{ url('/contact') }}">Kontak Kami</a></li>
         </ul>
     </div>
     <div class="col-md-3 ftr_navi ftr">
@@ -20,11 +20,11 @@
         <h3>{{ $setting->title }}</h3>
         <p>{{ $setting->address }}</p>
         <p>{{ $setting->phone }}</p>
-        <a href="mailto:mail@{{ $setting->email }}">{{ $setting->email }}</a>
+        <a href="mailto:mail@">{{ $setting->email }}</a>
     </div>
     <div class="col-md-3 ftr-logo">
-        <a href="index.html"><h3>Arrival</h3></a>
-        <p>© 2019 Arrival. All rights  Reserved | Design by &nbsp;<a href="http://w3layouts.com">W3Layouts</a></p>
+        <a href="{{ url('/') }}"><img src="{{ asset('travels-web/images/logo.png') }}" alt="" /></a>
+        <p>© 2019 Arrival. All rights  Reserved</a></p>
     </div>
     <div class="clearfix"> </div>
 </div>

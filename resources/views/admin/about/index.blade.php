@@ -1,12 +1,12 @@
 @extends('admin.app')
 
-@section("title") About @endsection
+@section("title") Tentang Kami @endsection
 
-@section("header") About @endsection
+@section("header") Tentang Kami @endsection
 
 @section("breadcrumb")
 <div class="breadcrumb-item"><a href="{{ route('admin.home') }}">Halaman Utama</a></div>
-<div class="breadcrumb-item active">About</div>
+<div class="breadcrumb-item active">Tentang Kami</div>
 @endsection
 
 @section('content')

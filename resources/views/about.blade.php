@@ -5,7 +5,7 @@
 @section('content')
 <div class="abouts">
     <div class="container">
-        <h3>About Us</h3>
+        <h3>Tentang Kami</h3>
         <div class="about-main">
             @foreach ($about as $about)
                 @if ($about->id == 1)
@@ -25,7 +25,6 @@
     </div>
     <div class="who_are">
         <div class="container">
-            <h5>WHO WE ARE</h5>
             @foreach ($abouttwo as $about)
                 @if ($about->id == 2)
                 <h4>{{ $about->title }}</h4>

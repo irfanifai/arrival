@@ -1,9 +1,16 @@
+<div class="welcome">
+	<div class="container">
+		<h3>AKTIFITAS</h3>
+		<p>Temukan beragam aktivitas yang cocok untuk anda di Indonesia</p>
+	</div>
+</div>
+
 <div class="container">
     <div class="work-main">
         @foreach ($tujuan->limit(2)->get() as $tujuan)
         <div class="col-md-6 work-wrapper">
-            <a href="{{asset('storage/' . $tujuan->featured)}}" class="b-link-stripe b-animate-go swipebox" title="Awesome Trip">
-                <img src="{{asset('storage/' . $tujuan->featured)}}" alt="" class="img-responsive">
+            <a href="{{asset($tujuan->featured)}}" class="b-link-stripe b-animate-go swipebox" title="Awesome Trip">
+                <img src="{{asset($tujuan->featured)}}" alt="" class="img-responsive">
                 <div class="b-wrapper">
                     <h2 class="b-animate b-from-left b-delay03">
                         <i class="glyphicon glyphicon-zoom-in"></i>

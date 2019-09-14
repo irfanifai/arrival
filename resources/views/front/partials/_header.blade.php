@@ -1,8 +1,8 @@
 <div class="header-nav">
 	<div class="container">
 		<div class="logo">
-			<a href="index.html">
-			<img src="{{ asset('travels-web/images/logo1.png') }}" alt="" /></a>
+			<a href="{{ url('/') }}">
+			<img src="{{ asset('travels-web/images/logo.png') }}" alt="" /></a>
 		</div>
 		<div class="navigation">
 			<nav class="navbar navbar-default">
@@ -17,16 +17,16 @@
 					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li class="{{ Request::is('/') ? 'active' : '' }}">
-                                <a href="{{ url('/') }}">Home</a>
+                                <a href="{{ url('/') }}">Beranda</a>
                             </li>
-                            <li class="{{ Request::is('') ? 'active' : '' }}">
-                                <a href="{{ url('/about') }}">About</a>
+                            <li class="{{ Request::is('about') ? 'active' : '' }}">
+                                <a href="{{ url('/about') }}">Tentang Kami</a>
                             </li>
                             <li class="{{ Request::is('blog') ? 'active' : '' }}">
                                 <a href="{{ url('/blog') }}">Blog</a>
                             </li>
                             <li class="{{ Request::is('contact') ? 'active' : '' }}">
-                                <a href="{{ url('/contact') }}">Contact</a>
+                                <a href="{{ url('/contact') }}">Kontak Kami</a>
                             </li>
                         </ul>
                     <div class="clearfix"></div>
