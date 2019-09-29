@@ -1,6 +1,6 @@
 @extends('front.app')
 
-@section("title") Contact @endsection
+@section("title") Kontak Kami @endsection
 
 @section('content')
 <div class="contact">

@@ -27,7 +27,7 @@ class IndexController extends Controller
     public function blog()
     {
         $setting = $this->setting();
-        $posts = Post::where('status', 1)->orderBy('published_at', 'DESC')->paginate(4);
+        $posts = Post::where('status', 1)->orderBy('published_at', 'DESC')->paginate(6);
         return view('blog', compact('setting', 'posts'));
     }
 

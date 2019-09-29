@@ -61,8 +61,20 @@
 
     <!-- Page Specific JS File -->
     <script src="{{ asset('js/myscript.js') }}"></script>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>tinymce.init({selector:'textarea'});</script>
+    <script src="https://cdn.tiny.cloud/1/swruegvyym0jmtwzpuh3144t0po7q0ierwl8l4oa4s3h8rgq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({
+        selector:'textarea',
+        height: 500,
+        themes: 'modern',
+        plugins: [
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table contextmenu directionality",
+            "emoticons template paste textcolor colorpicker textpattern"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media"
+    });
+    </script>
 
     <!-- Template JS File -->
     <script src="{{ asset('stisla-master/assets/js/scripts.js') }}"></script>

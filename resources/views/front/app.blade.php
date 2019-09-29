@@ -62,6 +62,8 @@
 		$().UItoTop({ easingType: 'easeOutQuart' });
 });
 </script>
+<script id="dsq-count-scr" src="//http-arrival-test-8080.disqus.com/count.js" async></script>
 <a href="#to-top" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
+
 </body>
 </html>

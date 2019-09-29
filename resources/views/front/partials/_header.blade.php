@@ -19,14 +19,14 @@
                             <li class="{{ Request::is('/') ? 'active' : '' }}">
                                 <a href="{{ url('/') }}">Beranda</a>
                             </li>
-                            <li class="{{ Request::is('about') ? 'active' : '' }}">
-                                <a href="{{ url('/about') }}">Tentang Kami</a>
+                            <li class="{{ Request::is('tentang-kami') ? 'active' : '' }}">
+                                <a href="{{ url('/tentang-kami') }}">Tentang Kami</a>
                             </li>
                             <li class="{{ Request::is('blog') ? 'active' : '' }}">
                                 <a href="{{ url('/blog') }}">Blog</a>
                             </li>
-                            <li class="{{ Request::is('contact') ? 'active' : '' }}">
-                                <a href="{{ url('/contact') }}">Kontak Kami</a>
+                            <li class="{{ Request::is('kontak-kami') ? 'active' : '' }}">
+                                <a href="{{ url('/kontak-kami') }}">Kontak Kami</a>
                             </li>
                         </ul>
                     <div class="clearfix"></div>

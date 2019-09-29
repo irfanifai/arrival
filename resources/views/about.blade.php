@@ -1,6 +1,6 @@
 @extends('front.app')
 
-@section("title") About @endsection
+@section("title") Tentang Kami @endsection
 
 @section('content')
 <div class="abouts">

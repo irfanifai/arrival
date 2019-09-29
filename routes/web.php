@@ -20,11 +20,11 @@ Route::get('/blog/{slug}', 'IndexController@show');
 Route::post('/blog/{slug}/comment', 'IndexController@comment')->name('post.comment');
 
 // About
-Route::get('/about', 'IndexController@about')->name('about');
+Route::get('/tentang-kami', 'IndexController@about')->name('about');
 
 // Contact
-Route::get('/contact', 'IndexController@contact')->name('contact.index');
-Route::post('/contact', 'IndexController@contactStore')->name('contact.store');
+Route::get('/kontak-kami', 'IndexController@contact')->name('contact.index');
+Route::post('/kontak-kami', 'IndexController@contactStore')->name('contact.store');
 
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 

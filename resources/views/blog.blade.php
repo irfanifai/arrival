@@ -18,9 +18,9 @@
                         </div>
                         <div class="top-blog">
                             <a class="fast text-capitalize" href="{{ url('/blog/' . $post->slug) }}">{{ $post->title }}</a>
-                            <p>Posted by <b>{{ $post->user->name }}</b> in <b>{{ $post->category->title }}</b> | <b>{{ $post->comments()->count() }} Comments</b></p>
+                            <p>Diposting oleh <b>{{ $post->user->name }}</b> in <b>{{ $post->category->title }}</b> |<a href="{{ url('/blog/' . $post->slug) }}#disqus_thread"></a></p>
                             <p>{!! substr($post->body, 0, 250) !!}...</p>
-                            <a href="{{ url('/blog/' . $post->slug) }}" class="more readmore">Readmore<span> </span></a>
+                            <a href="{{ url('/blog/' . $post->slug) }}" class="more readmore">Baca Lebih Lanjut<span> </span></a>
                         </div>
                         <div class="clearfix"> </div>
                     </div>

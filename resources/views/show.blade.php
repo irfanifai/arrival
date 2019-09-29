@@ -7,86 +7,49 @@
 	<div class="container" style="margin-top: 30px;">
 		{{-- <h3>{{ $post->title }}</h3> --}}
 
-        <div class="single wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
-            <div class="blog-to1 service_info">
+            <div class="single wow fadeInLeft animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+                <div class="blog-to1 service_info">
 
-                <img class="img-responsive sin-on" src="{{asset($post->featured)}}" alt="" style="width: 1280px; height: 430px;">
-                <div class="blog-top">
-                    <div class="blog-left">
-                        @php $date = $post->created_at; $date = date( "d", strtotime($date)); $month = $post->created_at; $month = date( "M", strtotime($month)); @endphp
-                        <b>{{ $date }}</b>
-                        <span>{{ $month }}</span>
+                    <img class="img-responsive sin-on" src="{{asset($post->featured)}}" alt="" style="width: 100%; height: 530px;">
+                    <div class="blog-top">
+                        <div class="blog-left">
+                            @php $date = $post->created_at; $date = date( "d", strtotime($date)); $month = $post->created_at; $month = date( "M", strtotime($month)); @endphp
+                            <b>{{ $date }}</b>
+                            <span>{{ $month }}</span>
+                        </div>
+                        <div class="top-blog">
+                            <a class="fast" href="{{ url('/blog/' . $post->slug) }}">{{ $post->title }}</a>
+                            <p>Posted by <b>{{ $post->user->name }}</b> in <b>{{ $post->category->title }}</b> |<a href="{{ url('/blog/' . $post->slug) }}#disqus_thread"></a></p>
+                            <p class="sed text-justify">{!! $post->body !!}</p>
+                        <div class="col-md-6 md-in">
                     </div>
-                    <div class="top-blog">
-                        <a class="fast" href="{{ url('/blog/' . $post->slug) }}">{{ $post->title }}</a>
-                        <p>Posted by <b>{{ $post->user->name }}</b> in <b>{{ $post->category->title }}</b> | <b>{{ $post->comments()->count() }} Comments</b></p>
-                        <p class="sed text-justify">{!! $post->body !!}</p>
-                    <div class="col-md-6 md-in">
+                    <div class="clearfix"></div>
+
+                    <div id="disqus_thread" style="margin: 50px 0 100px 0 !Important;"></div>
+                        <script>
+
+                        /**
+                        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+                        var disqus_config = function () {
+                        this.page.url = '{{ Request::url() }}';  // Replace PAGE_URL with your page's canonical URL variable
+                        this.page.identifier = '{{ $post->id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                        };
+
+                        (function() { // DON'T EDIT BELOW THIS LINE
+                        var d = document, s = d.createElement('script');
+                        s.src = 'https://http-arrival-test-8080.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                        })();
+                        </script>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    </div>
+
                 </div>
-                {{-- <tr>
-                    <td colspan=10>
-                        {{ $post->comment()->links()}}
-                    </td>
-                </tr> --}}
-                <div class="clearfix"> </div>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
 
-		<div class="single-middle">
-            <h3>{{ $post->comments->count() }} Komentar</h3>
-                @if ($post->comments)
-                    @foreach ($post->comments as $comment)
-                        @if ($comment->status == 1)
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object" src="{{ asset('travels-web/images/co.png') }}" alt="">
-                                    </a>
-                                    </div>
-                                    <div class="media-body">
-                                    <h4 class="media-heading"><a href="#">{{ $comment->name}}</a></h4>
-                                    <p>{{ $comment->body }}</p>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
-
-                @endif
             </div>
-            <div class="clearfix"> </div>
-        </div>
-		<!---->
-		<div class="single-bottom">
-			<h3>Tulis Komentar</h3>
-                {!! Form::open(['route' => ['post.comment', $post->slug], 'method' => 'POST']) !!}
-                @csrf
-                    <div class="col-md-6 comment">
-                        {!! Form::text('name', null, ['class' => $errors->has('name') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Nama Lengkap', 'required']) !!}
-                        @if ($errors->has('name'))
-                        <span class="invalid-feedback">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                    <div class="col-md-6 comment">
-                        {!! Form::email('email', null, ['class' => $errors->has('email') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Email Address', 'required']) !!}
-                        @if ($errors->has('email'))
-                        <span class="invalid-feedback">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                    <div class="clearfix"> </div>
-                        {!! Form::textarea('body', null, ['id' => 'textarea', 'class' => $errors->has('body') ? 'form-control is-invalid' : 'form-control', 'placeholder' => 'Isi Komentar', 'required']) !!}
-                        @if ($errors->has('body'))
-                        <span class="invalid-feedback">
-                            <strong>{{ $errors->first('body') }}</strong>
-                        </span>
-                        @endif
-                    <input type="submit" class="commentsend" value="Kirim">
-				{!! Form::close() !!}
-			</div>
 		</div>
 	</div>
 </div>
