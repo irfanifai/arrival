@@ -57,10 +57,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::delete('posts/{id}/delete-permanent', 'PostsController@deletePermanent')->name('posts.delete-permanent');
     Route::resource('posts', 'PostsController');
     // Komentar
-    Route::get('comments/trash', 'CommentsController@trash')->name('comments.trash');
-    Route::get('comments/{id}/restore', 'CommentsController@restore')->name('comments.restore');
-    Route::delete('comments/{id}/delete-permanent', 'CommentsController@deletePermanent')->name('comments.delete-permanent');
-    Route::resource('comments', 'CommentsController', ['except' => ['create', 'store']]);
+    // Route::get('comments/trash', 'CommentsController@trash')->name('comments.trash');
+    // Route::get('comments/{id}/restore', 'CommentsController@restore')->name('comments.restore');
+    // Route::delete('comments/{id}/delete-permanent', 'CommentsController@deletePermanent')->name('comments.delete-permanent');
+    // Route::resource('comments', 'CommentsController', ['except' => ['create', 'store']]);
     // Pengaturan Footer
     Route::get('settings', 'SettingsController@index')->name('settings.index');
     Route::post('settings', 'SettingsController@store')->name('settings.store');

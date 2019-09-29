@@ -51,7 +51,7 @@
                             @if($user->avatar)
                                 <img src="{{ asset($user->avatar) }}" width="50px">
                             @else
-                                N/A
+                                <img src="{{ asset('images/no-image.png') }}" width="50px">
                             @endif
                         </td>
                         <td>{{ $user->name }}</td>

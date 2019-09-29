@@ -58,7 +58,7 @@ class AboutController extends Controller
         $about->save();
 
         return redirect()->route('admin.about.index')
-            ->with('status', 'About berhasil dibuat');
+            ->with('status', 'Tentang Kami berhasil dibuat');
     }
 
     /**
@@ -116,7 +116,7 @@ class AboutController extends Controller
         $abouts->save();
 
         return redirect()->route('admin.about.index')
-            ->with('status', 'About berhasil diupdate');
+            ->with('status', 'Tentang Kami berhasil diupdate');
     }
 
     /**

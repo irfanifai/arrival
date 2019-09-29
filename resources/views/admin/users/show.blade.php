@@ -13,27 +13,13 @@
 @section("content")
 <div class="row">
     <div class="col-12 col-md-12 col-lg-5">
-        <div class="card profile-widget">
-            <div class="profile-widget-header">
-                @if($user->avatar)
-                    <img alt="foto profile pengguna" src="{{ asset($user->avatar) }}" class="rounded-circle profile-widget-picture">
-                @else
-                    <p class="mr-5">No avatar</p>
-                @endif
-                <div class="profile-widget-items">
-                    <div class="profile-widget-item">
-                        <div class="profile-widget-item-label">Artikel</div>
-                        <div class="profile-widget-item-value">{{ $user->post()->count() }}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="profile-widget-description">
-                <div class="profile-widget-name">{{ $user->name }}
-                    <div class="text-muted d-inline font-weight-normal">
-                        <div class="slash"></div> {{ $user->email }}</div>
-                    </div>
-                </div>
-            </div>
+        <div class="card" style="width: 18rem;">
+        <img src="{{ asset($user->avatar) }}" class="card-img-top" alt="Foto User">
+        <div class="card-body text-center">
+            <h6 class="card-title">{{ $user->name }}</h6>
+            <h6 class="card-title">{{ $user->email }}</h6>
+            <p class="card-text">Post Artikel : {{ $user->post()->count() }}</p>
+        </div>
         </div>
     </div>
 </div>

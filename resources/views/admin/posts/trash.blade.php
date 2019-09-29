@@ -37,7 +37,7 @@
                 </div>
             </div> --}}
 
-            <div class="col-md-4 float-right mb-4">
+            {{-- <div class="col-md-4 float-right mb-4">
                 <form action="{{ route('admin.posts.index') }}">
                 <div class="input-group">
                     <input type="text" class="form-control" value="{{Request::get('name')}}" name="name" placeholder="cari berdasarkan judul artikel">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 </form>
-            </div>
+            </div> --}}
 
             <div class=" col-md-8 float-left mb-4">
                 <ul class="nav nav-pills">

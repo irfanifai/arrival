@@ -77,21 +77,21 @@
                         <div class="tab-pane fade" id="pills-social" role="tabpanel" aria-labelledby="pills-social-tab">
                             <div class="form-group">
                                 <label for="so_facebook">Facebook</label>
-                                <input type="text" class="form-control @error('so_facebook') is-invalid @enderror" title="so_facebook" id="so_facebook" value="{{ $setting->so_facebook }}">
+                                <input type="text" class="form-control @error('so_facebook') is-invalid @enderror" name="so_facebook" id="so_facebook" value="{{ $setting->so_facebook }}">
                                 @error('so_facebook')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="so_twitter">Twitter</label>
-                                <input type="text" class="form-control @error('so_twitter') is-invalid @enderror" title="so_twitter" id="so_twitter" value="{{ $setting->so_twitter }}">
+                                <input type="text" class="form-control @error('so_twitter') is-invalid @enderror" name="so_twitter" id="so_twitter" value="{{ $setting->so_twitter }}">
                                 @error('so_twitter')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="so_instagram">Instagram</label>
-                                <input type="text" class="form-control @error('so_instagram') is-invalid @enderror" title="so_instagram" id="so_instagram" value="{{ $setting->so_instagram }}">
+                                <input type="text" class="form-control @error('so_instagram') is-invalid @enderror" name="so_instagram" id="so_instagram" value="{{ $setting->so_instagram }}">
                                 @error('phone')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
