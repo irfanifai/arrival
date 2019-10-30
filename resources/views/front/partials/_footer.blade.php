@@ -3,9 +3,9 @@
         <h3>Navigation</h3>
         <ul>
             <li><a href="{{ url('/') }}">Beranda</a></li>
-            <li><a href="{{ url('/about') }}">Tentang Kami</a></li>
+            <li><a href="{{ url('/tentang-kami') }}">Tentang Kami</a></li>
             <li><a href="{{ url('/blog') }}">Blog</a></li>
-            <li><a href="{{ url('/contact') }}">Kontak Kami</a></li>
+            <li><a href="{{ url('/kontak-kami') }}">Kontak Kami</a></li>
         </ul>
     </div>
     <div class="col-md-3 ftr_navi ftr">
